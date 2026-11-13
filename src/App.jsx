@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import TopBanner from './components/TopBanner';
 import ProgressBar from './components/ProgressBar';
 import GateOverlay from './components/GateOverlay';
 import AudioWidget from './components/AudioWidget';
@@ -11,7 +10,6 @@ import CoupleSection from './components/CoupleSection';
 import CeremoniesTimeline from './components/CeremoniesTimeline';
 import GallerySection from './components/GallerySection';
 import VenueSection from './components/VenueSection';
-import RsvpSection from './components/RsvpSection';
 import LogisticsSection from './components/LogisticsSection';
 import BlessingsFooter from './components/BlessingsFooter';
 
@@ -77,28 +75,25 @@ export default function App() {
 
   return (
     <div className="royal-app-container">
-      {/* 1. Top Preview Banner */}
-      <TopBanner />
-
-      {/* 2. Top Scroll Progress Indicator */}
+      {/* 1. Top Scroll Progress Indicator */}
       <ProgressBar />
 
-      {/* 3. 3D Swinging Peacock Gate Opening Screen */}
+      {/* 2. 3D Swinging Peacock Gate Opening Screen */}
       <GateOverlay 
         onOpenGate={handleOpenGate} 
         onHeroReveal={handleHeroReveal} 
       />
 
-      {/* 4. Royal Audio Soundtrack & Floating Widget */}
+      {/* 3. Royal Audio Soundtrack & Floating Widget */}
       <AudioWidget ref={audioWidgetRef} />
 
-      {/* 5. Ambient Falling Rose Petals Layer */}
+      {/* 4. Ambient Falling Rose Petals Layer */}
       <FallingPetals />
 
-      {/* 6. Dynamic Royal Jali Wallpaper & Blue Mandalas */}
+      {/* 5. Dynamic Royal Jali Wallpaper & Blue Mandalas */}
       <DynamicRoyalBg />
 
-      {/* 7. Main Palace Wedding Portal */}
+      {/* 6. Main Palace Wedding Portal */}
       <main id="weddingRoot">
         <HeroSection isRevealed={heroRevealed} />
         <CountdownSection />
@@ -106,7 +101,6 @@ export default function App() {
         <CeremoniesTimeline />
         <GallerySection />
         <VenueSection />
-        <RsvpSection />
         <LogisticsSection />
         <BlessingsFooter />
       </main>
