@@ -1,0 +1,2526 @@
+
+    /* ============================================================
+       0. CSS CUSTOM PROPERTIES & DESIGN TOKENS
+       ============================================================ */
+    :root {
+      --rgw-crimson: #9e141e;
+      --rgw-crimson-deep: #6d0a1d;
+      --rgw-crimson-dark: #3a0410;
+      --rgw-gold: #dea645;
+      --rgw-gold-light: #f7df96;
+      --rgw-gold-bright: #f6d27a;
+      --rgw-gold-pale: #fff1b8;
+      --rgw-gold-dark: #b16f23;
+      --rgw-ochre: #8a5a12;
+      --rgw-sapphire: #080e2c;
+      --rgw-amber-flood: #ffe4b3;
+      --rgw-parchment: #fff9eb;
+      --rgw-cream: #fbf7f0;
+      --rgw-cream-warm: #fbf1e4;
+      --rgw-text-dark: #2c1a14;
+      --rgw-text-muted: #5f3b2f;
+      --font-display: 'Cinzel Decorative', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-editorial: 'Marcellus', Georgia, serif;
+      --font-sans: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+      --shadow-royal: 0 16px 48px rgba(14, 8, 4, 0.42);
+      --ease-royal: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-swing: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-push: cubic-bezier(0.7, 0, 0.3, 1);
+      --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      width: 100%;
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      background-color: var(--rgw-cream-warm);
+      color: var(--rgw-text-dark);
+      font-family: var(--font-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    body.gate-locked {
+      overflow: hidden;
+      height: 100vh;
+      touch-action: none;
+    }
+
+    /* Top Preview Bar for The Creative Invites */
+    .tci-top-banner {
+      position: static;
+      margin: 40px auto 30px;
+      width: min(92%, 680px);
+      border-radius: 999px;
+      z-index: 999999;
+      background: rgba(14, 8, 4, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(222, 166, 69, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-sans);
+    }
+    .tci-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .tci-logo-badge {
+      background: linear-gradient(135deg, #dea645, #f7df96);
+      color: #1a1005;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .tci-title-text {
+      color: #fff9eb;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tci-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .tci-btn-catalog {
+      color: #eae0d5;
+      text-decoration: none;
+      font-size: 11px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .tci-btn-catalog:hover {
+      color: #fff;
+      border-color: #dea645;
+      background: rgba(222₹66,69,0.15);
+    }
+    .tci-btn-whatsapp {
+      background: #25D366;
+      color: #fff !important;
+      text-decoration: none !important;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 10px rgba(37,211₹02,0.35);
+      min-height: 44px;
+    }
+    @media (max-width: 600px) {
+      .tci-top-banner { position: static; margin: 30px auto 20px; width: 94%; padding: 6px 12px; }
+      .tci-title-text { display: none; }
+      .tci-btn-catalog { font-size: 10px; padding: 4px 8px; min-height: 38px; }
+      .tci-btn-whatsapp { font-size: 10px; padding: 4px 10px; min-height: 38px; }
+    }
+
+    /* Reading Progress Bar */
+    .royal-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #9e141e, #dea645, #f7df96, #dea645);
+      z-index: 99998;
+      transform-origin: left center;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+
+    /* ============================================================
+       1. 3D PEACOCK GATE ENTRANCE OVERLAY & REVEAL THROUGH DOORWAY
+       ============================================================ */
+    .gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99990;
+      background: #080e2c;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+      padding-top: 50px;
+    }
+    .gate-overlay.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gate-stage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0) scale(1.12);
+      width: max(100vw, calc(100vh * (1672 / 941)));
+      aspect-ratio: 1672 / 941;
+      transform-origin: 50.12% 69.18%;
+      perspective: 1400px;
+      perspective-origin: 50.12% 69.18%;
+      transition: transform 3.0s var(--ease-push), opacity 1.4s ease;
+      will-change: transform;
+    }
+    .gate-overlay.is-opening .gate-stage {
+      transform: translate3d(-50%, -50%, 0) scale(7.0);
+    }
+
+    .gate-facade-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+        /* Inside Doorway Portal Scene: Real Illuminated Palace Scene */
+    .gate-mask-portal {
+      position: absolute;
+      left: 42.105%;
+      top: 46.759%;
+      height: 44.846%;
+      width: calc(8.014% + 8.014%);
+      clip-path: url(#gateArchClip);
+      -webkit-clip-path: url(#gateArchClip);
+      mask-image: url('data:image/png;base64,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'), url('/assets/gate/peacock-opening.png');
+      -webkit-mask-image: url('data:image/png;base64,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'), url('/assets/gate/peacock-opening.png');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+      border-radius: 46% 46% 0 0 / 26% 26% 0 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 60%, #fff6cc 0%, #fbd9a8 45%, #dea645 100%);
+    }
+    .gate-portal-scene {
+      position: absolute;
+      inset: -5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at 50% 60%, #fff9eb 0%, #fbd9a8 50%, #dea645 100%);
+      pointer-events: none;
+    }
+    .gate-portal-sky {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 70%;
+      opacity: 0.85;
+      mix-blend-mode: soft-light;
+    }
+    .gate-portal-sun {
+      position: absolute;
+      width: 130%;
+      height: 130%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 0%, rgba(255, 238, 170, 0.95) 22%, rgba(255, 180, 80, 0.45) 45%, transparent 70%);
+      top: 15%;
+      left: -15%;
+      pointer-events: none;
+    }
+    .gate-portal-light {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(255, 240, 190, 0.65) 0%, rgba(222, 166, 69, 0.75) 100%);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* 3D Gate Doors */
+    .gate-door {
+      position: absolute;
+      max-width: none;
+      height: 44.846%;
+      width: 8.014%;
+      top: 46.759%;
+      transition: transform 2.6s var(--ease-swing), filter 2.6s ease;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: transform;
+    }
+    .gate-door--left {
+      left: 42.105%;
+      transform-origin: left center;
+    }
+    .gate-door--right {
+      left: 50.12%;
+      transform-origin: right center;
+    }
+    .gate-overlay.is-opening .gate-door--left {
+      transform: rotateY(86deg);
+      filter: brightness(0.5);
+    }
+    .gate-overlay.is-opening .gate-door--right {
+      transform: rotateY(-86deg);
+      filter: brightness(0.5);
+    }
+
+    /* Central Gate Seam Light Beam */
+    .gate-seam-beam {
+      position: absolute;
+      left: 50.12%;
+      top: 46.759%;
+      height: 44.846%;
+      width: 0.5%;
+      transform: translateX(-50%) scaleY(0);
+      background: #ffffff;
+      border-radius: 9999px;
+      filter: blur(2px);
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: top center;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .gate-overlay.is-opening .gate-seam-beam {
+      opacity: 1;
+      transform: translateX(-50%) scaleY(1);
+      transition-duration: 0.9s;
+    }
+
+    /* Gate Center Pulsing CTA Seal */
+    .gate-seal-cta {
+      position: absolute;
+      left: 50.12%;
+      top: 69.18%;
+      transform: translate3d(-50%, -50%, 0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      z-index: 20;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      min-width: 44px;
+      min-height: 44px;
+      background: none;
+      border: none;
+      outline: none;
+    }
+    .gate-overlay.is-opening .gate-seal-cta {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(1.6);
+      pointer-events: none;
+    }
+
+    .gate-seal-disc-wrap {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gate-seal-ripple {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid #dea645;
+      animation: gateRipple 1.8s ease-out infinite;
+      pointer-events: none;
+    }
+    .gate-seal-ripple--2 {
+      animation-delay: 0.9s;
+    }
+    @keyframes gateRipple {
+      0% { transform: scale(1); opacity: 0.9; }
+      100% { transform: scale(2.1); opacity: 0; }
+    }
+
+    .gate-seal-btn {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff1b8, #e3b44c 45%, #9c6a17);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #39150f;
+      box-shadow: 0 16px 48px rgba(14, 8, 4, 0.42);
+      animation: gateBtnPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes gateBtnPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(0.9); }
+    }
+    .gate-seal-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .gate-seal-label {
+      background: rgba(8, 14, 44, 0.6);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: #fbedd1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* Ambient Radial Vignette */
+    .gate-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(17, 2, 0, 0.75));
+      pointer-events: none;
+      transition: opacity 0.9s ease;
+      opacity: 0.55;
+    }
+    .gate-overlay.is-opening .gate-vignette {
+      opacity: 1;
+    }
+
+    /* Light Flood Layer */
+    .gate-light-flood {
+      position: absolute;
+      inset: 0;
+      background: #ffe4b3;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.2s ease-in 3.3s;
+      z-index: 15;
+    }
+    .gate-overlay.is-opening .gate-light-flood {
+      opacity: 1;
+    }
+
+    /* 16 Floating Embers */
+    .gate-ember {
+      position: absolute;
+      bottom: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #dea645;
+      filter: blur(1px);
+      pointer-events: none;
+      animation: floatEmber linear infinite;
+    }
+    @keyframes floatEmber {
+      0% { transform: translate3d(0, 0, 0); opacity: 0; }
+      20% { opacity: 0.9; }
+      80% { opacity: 0.7; }
+      100% { transform: translate3d(14px, -95vh, 0); opacity: 0; }
+    }
+
+    /* Gate Bottom Title */
+    .gate-bottom-names {
+      position: absolute;
+      inset-x: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(8, 14, 44, 0.85), rgba(8, 14, 44, 0.45), transparent);
+      padding: 7rem 1.5rem 2.5rem;
+      text-align: center;
+      color: #fbedd1;
+      z-index: 12;
+      pointer-events: none;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .gate-overlay.is-opening .gate-bottom-names {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+    }
+    .gate-kicker {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: #dea645;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+    .gate-couple-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      text-shadow: 0 4px 14px rgba(0,0,0,0.7);
+      line-height: 1.1;
+      color: #fbedd1;
+    }
+
+    /* ============================================================
+       2. DYNAMIC ROYAL BACKGROUND & WALLPAPER (CREAM #FBF1E4 / JALI LATTICE)
+       ============================================================ */
+    .royal-dynamic-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+      background-color: #fbf1e4;
+      pointer-events: none;
+    }
+    .royal-bg-radial {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 75% 65% at 50% 45%, #fffaf2 0%, #fbeedd 45%, #f3d9c4 80%, #e9c3a6 100%);
+    }
+    .royal-bg-orb-pink {
+      position: absolute;
+      left: -20vmax;
+      top: -15vmax;
+      width: 60vmax;
+      height: 60vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244, 190, 200, 0.55), transparent 65%);
+      animation: floatOrbPink 26s ease-in-out infinite alternate;
+    }
+    .royal-bg-orb-gold {
+      position: absolute;
+      right: -15vmax;
+      bottom: -20vmax;
+      width: 60vmax;
+      height: 60vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 200, 130, 0.5), transparent 65%);
+      animation: floatOrbGold 30s ease-in-out infinite alternate;
+    }
+    @keyframes floatOrbPink {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(60px, 40px, 0); }
+    }
+    @keyframes floatOrbGold {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50px, -40px, 0); }
+    }
+
+    /* SVG Jali Lattice Wallpaper Overlay */
+    .royal-bg-jali {
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath d='M36 2 L70 36 L36 70 L2 36 Z' fill='none' stroke='%23b8862b' stroke-width='1'/%3E%3Cpath d='M36 22 Q44 28 36 36 Q28 28 36 22 Z M36 50 Q44 44 36 36 Q28 44 36 50 Z M22 36 Q28 28 36 36 Q28 44 22 36 Z M50 36 Q44 28 36 36 Q44 44 50 36 Z' fill='none' stroke='%23b8862b' stroke-width='1'/%3E%3Ccircle cx='36' cy='36' r='2' fill='%23b8862b'/%3E%3C/svg%3E");
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.25), black 90%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.25), black 90%);
+    }
+
+    /* Outer Ornate Double Border & Corner Emblems */
+    .royal-bg-frame {
+      position: absolute;
+      inset: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(201, 151, 58, 0.6);
+      pointer-events: none;
+    }
+    .royal-bg-frame-inner {
+      position: absolute;
+      inset: 13px;
+      border-radius: 14px;
+      border: 1px dashed rgba(201, 151, 58, 0.4);
+      pointer-events: none;
+    }
+    @media (min-width: 768px) {
+      .royal-bg-frame { inset: 16px; }
+      .royal-bg-frame-inner { inset: 25px; }
+    }
+    .royal-bg-corner {
+      position: absolute;
+      color: #b8862b;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .royal-bg-corner--tl { top: 3px; left: 3px; }
+    .royal-bg-corner--tr { top: 3px; right: 3px; }
+    .royal-bg-corner--bl { bottom: 3px; left: 3px; }
+    .royal-bg-corner--br { bottom: 3px; right: 3px; }
+
+    /* Rotating Corner Blue Mandalas */
+    .mandala-corner {
+      position: absolute;
+      width: 58vmin;
+      height: 58vmin;
+      pointer-events: none;
+    }
+    .mandala-corner--tr {
+      top: -27vmin;
+      right: -27vmin;
+    }
+    .mandala-corner--bl {
+      bottom: -27vmin;
+      left: -27vmin;
+    }
+    @media (min-width: 768px) {
+      .mandala-corner { width: 38vmax; height: 38vmax; }
+      .mandala-corner--tr { top: -16vmax; right: -16vmax; }
+      .mandala-corner--bl { bottom: -20vmax; left: -20vmax; }
+    }
+    .mandala-corner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.35;
+      animation: spinMandala 90s linear infinite;
+    }
+    @keyframes spinMandala {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .mandala-corner--bl img {
+      animation: spinMandalaRev 90s linear infinite;
+    }
+    @keyframes spinMandalaRev {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    /* Floating Falling Petals Layer */
+    .falling-petals-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .petal-item {
+      position: absolute;
+      top: -30px;
+      animation: fallPetal linear infinite;
+      perspective: 400px;
+    }
+    .petal-item svg {
+      animation: flipPetal linear infinite;
+    }
+    @keyframes fallPetal {
+      0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      100% { transform: translate3d(0, 115vh, 0) rotate(360deg); }
+    }
+    @keyframes flipPetal {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      50% { transform: rotateX(180deg) rotateY(90deg); }
+      100% { transform: rotateX(360deg) rotateY(0deg); }
+    }
+
+    /* ============================================================
+       3. ORNAMENT DIVIDERS & SECTION HEADINGS
+       ============================================================ */
+    .section-ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #dea645;
+      margin-top: 1rem;
+    }
+    .section-ornament-line {
+      height: 1px;
+      width: 64px;
+      background: #dea645;
+      transform-origin: center;
+      transition: transform 1.2s var(--ease-royal);
+    }
+    .section-ornament-star {
+      font-size: 1.25rem;
+      line-height: 1;
+      display: inline-block;
+      animation: spinStar 16s linear infinite;
+    }
+    @keyframes spinStar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .section-heading-group {
+      text-align: center;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+      padding: 0 1rem;
+    }
+    .section-kicker {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: #b16f23;
+      line-height: 1.2;
+    }
+    .section-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      color: #9e141e;
+      line-height: 1.15;
+      margin-top: 0.5rem;
+    }
+
+    /* Jewel Rosette Separator */
+    .rosette-separator {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      width: 8rem;
+      height: 8rem;
+      filter: drop-shadow(0 10px 20px rgba(90, 40, 120, 0.35));
+    }
+    @media (min-width: 768px) {
+      .rosette-separator { width: 11rem; height: 11rem; margin-bottom: 2rem; }
+    }
+    .rosette-separator img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: spinRosette 60s linear infinite;
+    }
+    @keyframes spinRosette {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ============================================================
+       4. HERO SECTION (MULTI-LAYER SKY, PALACE, SUN & PARALLAX)
+       ============================================================ */
+    .royal-hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      min-height: 100svh;
+      min-height: 100dvh;
+      width: 100%;
+      padding-top: 5rem;
+    }
+
+    /* Hero Background Layers */
+    .hero-sky-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-sky-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 45%, #f7b98e 70%, #fbd9a8);
+    }
+    .hero-sky-img-box {
+      position: absolute;
+      inset-x: 0;
+      top: 0;
+      height: 80%;
+      mask-image: linear-gradient(to bottom, black 78%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent);
+      will-change: transform;
+    }
+    @media (min-width: 768px) {
+      .hero-sky-img-box { height: 72%; }
+    }
+    .hero-sky-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 80%;
+      transform: scale(1.15);
+      animation: slowPanSky 40s ease-in-out infinite alternate;
+    }
+    @keyframes slowPanSky {
+      0% { transform: scale(1.15) translate3d(0, 0, 0); }
+      100% { transform: scale(1.22) translate3d(-2.5%, 0, 0); }
+    }
+
+    /* Celestial Rotating Sun Rays */
+    .hero-sun-rays {
+      position: absolute;
+      left: 50%;
+      top: 70%;
+      transform: translate(-50%, -50%);
+      width: 220vmax;
+      height: 220vmax;
+      mix-blend-mode: soft-light;
+      background: repeating-conic-gradient(from 0deg, rgba(255, 236, 190, 0.55) 0deg 4deg, transparent 4deg 13deg);
+      mask-image: radial-gradient(circle, black 0%, transparent 45%);
+      -webkit-mask-image: radial-gradient(circle, black 0%, transparent 45%);
+      animation: spinRays 240s linear infinite;
+    }
+    @keyframes spinRays {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero-amber-aura {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 42% at 50% 24%, rgba(255, 228, 179, 0.62), transparent 75%);
+    }
+
+    .hero-amber-melt {
+      position: absolute;
+      inset-x: 0;
+      bottom: 0;
+      height: 16%;
+      background: linear-gradient(to top, #ffe4b3, transparent);
+      pointer-events: none;
+    }
+
+    /* Hero Text Staggered Entrance */
+    .hero-text-container {
+      position: relative;
+      z-index: 20;
+      padding: 0 1rem;
+      text-align: center;
+      margin-top: 1rem;
+      will-change: transform, opacity;
+    }
+    .hero-stagger-item {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 1.2s var(--ease-royal), transform 1.2s var(--ease-royal);
+    }
+    .hero-text-container.is-revealed .hero-stagger-item:nth-child(1) {
+      opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.1s;
+    }
+    .hero-text-container.is-revealed .hero-stagger-item:nth-child(2) {
+      opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.3s;
+    }
+    .hero-text-container.is-revealed .hero-stagger-item:nth-child(3) {
+      opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.5s;
+    }
+    .hero-text-container.is-revealed .hero-stagger-item:nth-child(4) {
+      opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.7s;
+    }
+
+    .hero-kicker-shubh {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: #b16f23;
+      margin-bottom: 0.25rem;
+    }
+    .hero-couple-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1;
+      color: #9e141e;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+      letter-spacing: 0.05em;
+    }
+    .hero-ampersand {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      color: #b16f23;
+      line-height: 1;
+      margin: 0.25rem 0;
+    }
+
+    /* Grand Palace Silhouette & Sun Disc */
+    .hero-palace-wrapper {
+      position: relative;
+      z-index: 10;
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      will-change: transform;
+    }
+    .hero-palace-inner {
+      position: relative;
+      width: 150%;
+      flex-shrink: 0;
+    }
+    @media (min-width: 768px) {
+      .hero-palace-inner { width: 112%; }
+    }
+
+    /* Glowing Sun Disc behind central palace dome */
+    .hero-sun-disc-box {
+      position: absolute;
+      left: 50%;
+      top: 14%;
+      transform: translate3d(-50%, -50%, 0);
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-sun-disc {
+      width: clamp(280px, 80vw, 680px);
+      height: clamp(280px, 80vw, 680px);
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 0 6%, #fff6cc 9%, rgba(255, 222, 130, 0.95) 14%, rgba(255, 190, 95, 0.6) 24%, rgba(255, 160, 75, 0.28) 38%, rgba(255, 150, 70, 0.1) 52%, transparent 70%);
+      animation: pulseSunDisc 7s ease-in-out infinite;
+    }
+    @keyframes pulseSunDisc {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .hero-palace-img {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Palace Sheen Shine Animation */
+    .hero-palace-sheen-box {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      mask-image: url('/assets/grand-palace-1000.webp');
+      -webkit-mask-image: url('/assets/grand-palace-1000.webp');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      pointer-events: none;
+    }
+    .hero-palace-sheen-bar {
+      position: absolute;
+      inset-y: 0;
+      left: 0;
+      width: 33%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: skewX(-12deg);
+      animation: palaceSheen 9s ease-in-out infinite 3s;
+    }
+    @keyframes palaceSheen {
+      0% { transform: translate3d(-150%, 0, 0) skewX(-12deg); }
+      50%, 100% { transform: translate3d(450%, 0, 0) skewX(-12deg); }
+    }
+
+    /* Hero Save the Date Badge */
+    .hero-badge-wrap {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 2.5rem;
+      width: 100%;
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 1.2s var(--ease-royal) 1.0s, transform 1.2s var(--ease-royal) 1.0s;
+    }
+    .hero-text-container.is-revealed ~ .hero-badge-wrap {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .hero-date-pill {
+      background: radial-gradient(ellipse at center, rgba(163, 23, 47, 0.95), rgba(92, 8, 22, 0.95));
+      border: 1px solid rgba(246, 210, 122, 0.7);
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      text-align: center;
+      animation: floatHeroBadge 4s ease-in-out infinite;
+    }
+    @keyframes floatHeroBadge {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -6px, 0); }
+    }
+    .hero-date-text {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: #fff9eb;
+      letter-spacing: 0.1em;
+    }
+    .hero-venue-text {
+      font-family: var(--font-display);
+      font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+      color: #dea645;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      margin-top: 0.25rem;
+    }
+
+    /* Bouncing Scroll Down Prompt */
+    .hero-scroll-prompt {
+      margin-top: 1.5rem;
+      color: #9e141e;
+      animation: bounceScroll 1.8s ease-in-out infinite;
+    }
+    @keyframes bounceScroll {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, 8px, 0); }
+    }
+
+    /* ============================================================
+       5. COUNTDOWN & INVITATION NOTE SECTION
+       ============================================================ */
+    .countdown-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem 6rem;
+      min-height: 70vh;
+    }
+    .countdown-wrap {
+      max-width: 48rem;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .countdown-family-aura {
+      position: absolute;
+      inset: -1.5rem;
+      z-index: -1;
+      background: radial-gradient(closest-side, rgba(255, 247, 232, 0.95) 65%, rgba(255, 247, 232, 0));
+      pointer-events: none;
+    }
+    .countdown-kicker-families {
+      font-family: var(--font-script);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      color: #8d5a17;
+      line-height: 1.2;
+    }
+    .countdown-request-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 3vw, 2.25rem);
+      font-weight: 600;
+      font-style: italic;
+      color: #7a0c15;
+      line-height: 1.4;
+      margin-top: 1rem;
+    }
+
+    .countdown-subtitle-moments {
+      font-family: var(--font-script);
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      color: #8d5a17;
+      margin-top: 2.5rem;
+    }
+
+    /* 4 Arched Jharokha Countdown Tiles */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(0.6rem, 2vw, 1.75rem);
+      max-width: 44rem;
+      margin: 1.25rem auto 0;
+      width: 100%;
+    }
+    .countdown-tile {
+      position: relative;
+      aspect-ratio: 100 / 150;
+      width: 100%;
+      border-radius: 60px 60px 14px 14px;
+      overflow: hidden;
+      border: 2px solid #dea645;
+      background: radial-gradient(ellipse at 50% 35%, #9e141e, #3d0610);
+      box-shadow: 0 8px 24px rgba(60, 20, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: floatTile 4s ease-in-out infinite;
+    }
+    .countdown-tile:nth-child(2) { animation-delay: 0.5s; }
+    .countdown-tile:nth-child(3) { animation-delay: 1.0s; }
+    .countdown-tile:nth-child(4) { animation-delay: 1.5s; }
+    @keyframes floatTile {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -7px, 0); }
+    }
+
+    /* Pulsing Second Tile */
+    .countdown-tile--pulse {
+      animation: floatTile 4s ease-in-out infinite 1.5s, pulseSecs 1s ease-out infinite;
+    }
+    @keyframes pulseSecs {
+      0%, 100% { box-shadow: inset 0 0 0 0 rgba(255, 205, 110, 0), 0 8px 24px rgba(60, 20, 0, 0.35); }
+      50% { box-shadow: inset 0 0 24px 4px rgba(255, 205, 110, 0.6), 0 8px 30px rgba(222, 166, 69, 0.5); }
+    }
+
+    .countdown-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3.25rem);
+      font-weight: 700;
+      color: #fff1b8;
+      line-height: 1;
+      text-shadow: 0 2px 4px rgba(40, 0, 0, 0.7);
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .countdown-lbl {
+      font-family: var(--font-display);
+      font-size: clamp(0.55rem, 1.4vw, 0.75rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #dea645;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================================
+       6. THE ROYAL COUPLE & ANCESTRAL GRACE (JHAROKHA BALCONIES)
+          WITH SCROLL-DRIVEN 3D DOOR/SHUTTER REVEAL
+       ============================================================ */
+    .couple-section {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 4rem 1rem 6rem;
+    }
+    .couple-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.25rem, 4vw, 4rem);
+      align-items: start;
+    }
+
+    .couple-card {
+      text-align: center;
+    }
+
+    /* Jharokha Arch Frame Container with 3D Perspective */
+    .jharokha-arch-frame {
+      position: relative;
+      aspect-ratio: 100 / 145;
+      width: 100%;
+      max-width: 22rem;
+      margin: 0 auto;
+      border-radius: 130px 130px 20px 20px;
+      overflow: hidden;
+      border: 3px solid #dea645;
+      box-shadow: 0 16px 40px rgba(60, 20, 0, 0.25);
+      background: #231911;
+      perspective: 900px;
+      transition: transform 0.4s ease;
+    }
+    .jharokha-arch-frame:hover {
+      transform: scale(1.03);
+    }
+
+    .jharokha-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .jharokha-arch-frame:hover .jharokha-photo {
+      transform: scale(1.06);
+    }
+    .jharokha-inner-shadow {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 18px 6px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Jharokha Carved Jali Shutter Door Leaves */
+    .jharokha-shutter {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.5%;
+      z-index: 8;
+      pointer-events: none;
+      background-color: #dea645;
+      background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.92) 0 33%, transparent 35%),
+                        radial-gradient(circle at center, rgba(255, 255, 255, 0.92) 0 33%, transparent 35%);
+      background-size: 16px 16px;
+      background-position: 0 0, 8px 8px;
+      box-shadow: inset 0 0 0 2px #b8862b, 0 10px 24px rgba(0, 0, 0, 0.35);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: transform 1.8s var(--ease-royal), opacity 1.8s ease;
+      will-change: transform;
+    }
+    .jharokha-shutter--left {
+      left: 0;
+      transform-origin: left center;
+      transform: rotateY(0deg);
+    }
+    .jharokha-shutter--right {
+      right: 0;
+      transform-origin: right center;
+      transform: rotateY(0deg);
+    }
+
+    /* Shutter Opened State on Scroll */
+    .jharokha-arch-frame.is-opened .jharokha-shutter--left {
+      transform: rotateY(108deg);
+      opacity: 0.15;
+    }
+    .jharokha-arch-frame.is-opened .jharokha-shutter--right {
+      transform: rotateY(-108deg);
+      opacity: 0.15;
+    }
+
+    .jharokha-shutter-border {
+      position: absolute;
+      inset: 6%;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .jharokha-shutter-handle {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8%;
+      height: 16%;
+      border-radius: 999px;
+      border: 2px solid #d4a23a;
+      background: rgba(246, 210, 122, 0.45);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    .jharokha-shutter-handle--left { right: 5%; }
+    .jharokha-shutter-handle--right { left: 5%; }
+
+    .couple-role {
+      font-family: var(--font-script);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      color: #8d5a17;
+      margin-top: 1.5rem;
+    }
+    .couple-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.75rem);
+      color: #9e141e;
+      line-height: 1.15;
+    }
+    .couple-parents {
+      font-family: var(--font-serif);
+      font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+      font-style: italic;
+      color: #5f3b2f;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    /* Ancestral Grace (Elders) */
+    .elders-section {
+      max-width: 64rem;
+      margin: 2rem auto 0;
+      padding: 0 1rem 4rem;
+    }
+    .elders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.5rem, 3vw, 3.5rem);
+    }
+    @media (max-width: 600px) {
+      .elders-grid { grid-template-columns: 1fr; }
+    }
+
+    .elder-card {
+      text-align: center;
+    }
+    .elder-jharokha-box {
+      width: 100%;
+      max-width: 14rem;
+      margin: 0 auto;
+      aspect-ratio: 100 / 140;
+      border-radius: 100px 100px 16px 16px;
+      overflow: hidden;
+      border: 2px solid #dea645;
+      box-shadow: 0 12px 30px rgba(60, 20, 0, 0.2);
+      position: relative;
+      perspective: 900px;
+    }
+    .elder-jharokha-box.is-opened .jharokha-shutter--left {
+      transform: rotateY(108deg);
+      opacity: 0.15;
+    }
+    .elder-jharokha-box.is-opened .jharokha-shutter--right {
+      transform: rotateY(-108deg);
+      opacity: 0.15;
+    }
+
+    /* Ribbon Flag Badge */
+    .elder-ribbon-badge {
+      display: inline-block;
+      position: relative;
+      margin: 1.25rem auto 0.5rem;
+      padding: 0.35rem 1.75rem;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff1b8;
+      background: linear-gradient(180deg, #b3122e, #6d0a1d);
+      clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+      box-shadow: 0 4px 10px rgba(90, 10, 20, 0.35);
+      border: 1px solid rgba(246, 210, 122, 0.7);
+    }
+    .elder-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      color: #9e141e;
+      margin-top: 0.4rem;
+    }
+    .elder-blessing {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: #5f3b2f;
+      margin-top: 0.25rem;
+    }
+
+    /* ============================================================
+       7. THE ROYAL FESTIVITIES (UNROLLING VELVET SCROLLS & TIMELINE CAR)
+       ============================================================ */
+    .ceremonies-section {
+      padding: 4rem 1rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ceremonies-timeline-wrap {
+      position: relative;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    /* Central Gold Timeline Line */
+    .timeline-vertical-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 1.25rem;
+      width: 3px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, #dea645, #f7df96, #b16f23, #dea645);
+      border-radius: 9999px;
+      z-index: 5;
+    }
+    @media (min-width: 768px) {
+      .timeline-vertical-line { left: 50%; }
+    }
+
+    /* Animated Driving Timeline Car */
+    .timeline-car-tracker {
+      position: absolute;
+      left: 1.25rem;
+      transform: translate3d(-50%, -12%, 0);
+      width: 2.75rem;
+      z-index: 15;
+      pointer-events: none;
+      transition: top 0.15s cubic-bezier(0.1, 1, 0.1, 1);
+      will-change: top;
+    }
+    @media (min-width: 768px) {
+      .timeline-car-tracker { left: 50%; width: 5.5rem; }
+    }
+    .timeline-car-tracker img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 8px rgba(60, 30, 0, 0.35));
+      animation: carWobble 2.4s ease-in-out infinite;
+    }
+    @keyframes carWobble {
+      0%, 100% { transform: rotate(-1.5deg) translate3d(0, 0, 0); }
+      50% { transform: rotate(1.5deg) translate3d(0, -3px, 0); }
+    }
+
+    .ceremonies-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 768px) {
+      .ceremonies-list { gap: 5rem; }
+    }
+
+    /* Ceremony Row item */
+    .ceremony-row {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      position: relative;
+    }
+    @media (min-width: 768px) {
+      .ceremony-row {
+        grid-template-columns: 1fr 5rem 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Timeline Node Bullet */
+    .timeline-bullet {
+      grid-column: 1;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #dea645;
+      box-shadow: 0 0 0 4px #ffe4b3;
+      justify-self: center;
+      z-index: 6;
+    }
+    @media (min-width: 768px) {
+      .timeline-bullet { grid-column: 2; }
+    }
+
+    .ceremony-scroll-col {
+      grid-column: 2;
+    }
+    @media (min-width: 768px) {
+      .ceremony-row:nth-child(odd) .ceremony-scroll-col {
+        grid-column: 1;
+      }
+      .ceremony-row:nth-child(even) .ceremony-scroll-col {
+        grid-column: 3;
+      }
+    }
+
+    /* Date Callout for desktop opposite side */
+    .ceremony-date-callout {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .ceremony-date-callout {
+        display: block;
+        font-family: var(--font-script);
+        font-size: 3.25rem;
+        color: #b16f23;
+        line-height: 1;
+      }
+      .ceremony-row:nth-child(odd) .ceremony-date-callout {
+        grid-column: 3;
+        text-align: left;
+      }
+      .ceremony-row:nth-child(even) .ceremony-date-callout {
+        grid-column: 1;
+        text-align: right;
+      }
+    }
+
+    /* Dynamic Unrolling Velvet Scroll Card (1024 / 1536 aspect) */
+    .unrolling-scroll-card {
+      position: relative;
+      aspect-ratio: 1024 / 1536;
+      width: 100%;
+      max-width: 26rem;
+      margin: 0 auto;
+      filter: drop-shadow(0 14px 28px rgba(36, 18, 12, 0.28));
+      transition: transform 0.3s ease;
+    }
+    .unrolling-scroll-card:hover {
+      transform: translate3d(0, -4px, 0);
+    }
+
+    /* Body layer starts clipped to top */
+    .scroll-body-layer {
+      position: absolute;
+      inset-x: 0;
+      top: 11.7%; /* 180 / 1536 */
+      height: 72.2%; /* 1110 / 1536 */
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.4s var(--ease-royal);
+      will-change: clip-path;
+    }
+    .unrolling-scroll-card.is-unrolled .scroll-body-layer {
+      clip-path: inset(0 0 0% 0);
+    }
+
+    .scroll-body-bg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Inside content starts hidden and reveals when unrolled */
+    .scroll-body-content {
+      position: absolute;
+      inset: 14% 20% 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff9eb;
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 0.8s ease 0.85s, transform 0.8s var(--ease-royal) 0.85s;
+    }
+    .unrolling-scroll-card.is-unrolled .scroll-body-content {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .scroll-top-roller {
+      position: absolute;
+      inset-x: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 52%; /* 800 / 1536 */
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Bottom roller starts translated up, and rides down in sync */
+    .scroll-bottom-roller {
+      position: absolute;
+      inset-x: 0;
+      top: 82.6%; /* 1270 / 1536 */
+      height: 17.3%; /* 266 / 1536 */
+      width: 100%;
+      display: block;
+      pointer-events: none;
+      filter: drop-shadow(0 8px 10px rgba(60, 10, 0, 0.35));
+      transform: translate3d(0, -320%, 0);
+      transition: transform 1.4s var(--ease-royal);
+      will-change: transform;
+    }
+    .unrolling-scroll-card.is-unrolled .scroll-bottom-roller {
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Inside Scroll Typography */
+    .scroll-event-tag {
+      font-family: var(--font-display);
+      font-size: clamp(0.6rem, 1.8cqw, 0.8rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #dea645;
+    }
+    .scroll-event-icon {
+      font-size: clamp(1.8rem, 5.5cqw, 2.5rem);
+      margin-top: 0.35rem;
+      filter: drop-shadow(0 0 10px rgba(255, 200, 80, 0.6));
+      animation: swayIcon 3s ease-in-out infinite;
+    }
+    @keyframes swayIcon {
+      0%, 100% { transform: rotate(-8deg) translate3d(0, 0, 0); }
+      50% { transform: rotate(8deg) translate3d(0, -4px, 0); }
+    }
+    .scroll-event-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 4.5cqw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-top: 0.4rem;
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 2px rgba(40, 0, 0, 0.6);
+    }
+    .scroll-event-note {
+      font-family: var(--font-script);
+      font-size: clamp(1.2rem, 3.8cqw, 1.6rem);
+      color: #fbe3b4;
+      margin-top: 0.3rem;
+      line-height: 1.2;
+    }
+    .scroll-gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #dea645;
+      margin: 0.6rem 0;
+    }
+    .scroll-gold-divider-line {
+      width: 2.5rem;
+      height: 1px;
+      background: #dea645;
+    }
+    .scroll-meta-line {
+      font-family: var(--font-serif);
+      font-size: clamp(0.85rem, 2.4cqw, 1.1rem);
+      font-weight: 600;
+      color: #fff1d6;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .scroll-venue-line {
+      font-family: var(--font-serif);
+      font-size: clamp(0.85rem, 2.4cqw, 1.05rem);
+      font-style: italic;
+      color: #fbe3b4;
+      line-height: 1.3;
+      margin-top: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .scroll-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid #dea645;
+      color: #fff1b8;
+      text-decoration: none;
+      font-family: var(--font-editorial);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(8, 14, 44, 0.4);
+      transition: all 0.25s ease;
+      min-height: 44px;
+    }
+    .scroll-map-btn:hover {
+      background: #dea645;
+      color: #1a1005;
+    }
+
+    /* ============================================================
+       8. GILDED PALACE MEMORIES (3D PHOTO GALLERY CAROUSEL)
+       ============================================================ */
+    .gallery-section {
+      padding: 5rem 1rem 6rem;
+      position: relative;
+    }
+    .gallery-carousel-stage {
+      position: relative;
+      max-width: 56rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .gallery-viewport {
+      position: relative;
+      aspect-ratio: 100 / 140;
+      width: 100%;
+      max-width: 22rem;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid #dea645;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      background: #140d08;
+    }
+    .gallery-viewport img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Ribbon Caption Banner below photo */
+    .gallery-caption-banner {
+      position: relative;
+      max-width: 26rem;
+      margin: -1rem auto 0;
+      padding: 1rem 2rem 0.85rem;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 30%, #a3172f, #5c0816);
+      clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+      box-shadow: 0 16px 40px rgba(90, 10, 20, 0.45);
+      border: 1px solid rgba(246, 210, 122, 0.7);
+      z-index: 10;
+    }
+    .gallery-caption-inner-dashed {
+      position: absolute;
+      inset: 5px;
+      border: 1px dashed rgba(246, 210, 122, 0.5);
+      pointer-events: none;
+    }
+    .gallery-caption-title {
+      font-family: var(--font-script);
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      color: #fff1b8;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gallery-counter-pill {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: rgba(246, 210, 122, 0.9);
+      margin-top: 0.25rem;
+    }
+
+    /* Shimmering Progress Bar */
+    .gallery-progress-track {
+      width: 10rem;
+      height: 3px;
+      border-radius: 9999px;
+      background: rgba(222, 166, 69, 0.25);
+      margin: 1rem auto 0;
+      overflow: hidden;
+    }
+    .gallery-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #dea645, #f7df96, #dea645);
+      transform-origin: left;
+      transition: width 0.4s ease;
+    }
+
+    /* Navigation & Arched Thumbs */
+    .gallery-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery-nav-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff1b8, #e3b44c 45%, #9c6a17);
+      border: none;
+      color: #39150f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s;
+    }
+    .gallery-nav-arrow:hover { transform: scale(1.08); }
+    .gallery-nav-arrow svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .gallery-thumbs-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery-thumb-btn {
+      position: relative;
+      overflow: hidden;
+      border-radius: 100px 100px 0 0;
+      border: 1px solid rgba(212, 162, 58, 0.6);
+      width: 1.75rem;
+      height: 2.75rem;
+      opacity: 0.6;
+      cursor: pointer;
+      background: #140d08;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+    @media (min-width: 768px) {
+      .gallery-thumb-btn { width: 2.25rem; height: 3.5rem; }
+    }
+    .gallery-thumb-btn.is-active {
+      width: 2.25rem;
+      height: 3.5rem;
+      border: 2px solid #d4a23a;
+      opacity: 1;
+      box-shadow: 0 4px 10px rgba(120, 60, 0, 0.4);
+    }
+    @media (min-width: 768px) {
+      .gallery-thumb-btn.is-active { width: 2.75rem; height: 4.25rem; }
+    }
+    .gallery-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ============================================================
+       9. THE VENUE & INTERACTIVE GOOGLE MAP (WHERE HEARTS UNITE)
+       ============================================================ */
+    .venue-section {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 5rem 1rem 6rem;
+    }
+    .venue-card-conic {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+      padding: 3px;
+      box-shadow: 0 30px 60px -20px rgba(90, 10, 20, 0.6);
+      background: radial-gradient(ellipse at 30% 20%, #a3172f 0%, #6d0a1d 45%, #3a0410 100%);
+    }
+    /* Spinning Conic Gold Border */
+    .venue-card-conic::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg, #f6d27a, #8a5a12 20%, #fff1b8 30%, #b98321 50%, #f6d27a 70%, #8a5a12 85%, #f6d27a);
+      animation: spinConic 18s linear infinite;
+    }
+    @keyframes spinConic {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .venue-card-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(2rem - 3px);
+      background: radial-gradient(ellipse at 30% 20%, #a3172f 0%, #6d0a1d 45%, #3a0410 100%);
+      padding: 2.5rem 1.5rem;
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .venue-card-inner {
+        grid-template-columns: 1fr 1.15fr;
+        padding: 4rem 3rem;
+        gap: 3rem;
+      }
+    }
+
+    /* Double inner gold frame */
+    .venue-inner-border {
+      position: absolute;
+      inset: 0.75rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(246, 210, 122, 0.7);
+      pointer-events: none;
+    }
+    .venue-inner-dashed {
+      position: absolute;
+      inset: 1.1rem;
+      border-radius: 1.3rem;
+      border: 1px dashed rgba(246, 210, 122, 0.35);
+      pointer-events: none;
+    }
+
+    /* 4 Corner Rubies */
+    .conic-corner-ruby {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(45deg);
+      border: 1px solid #f6d27a;
+      background: radial-gradient(circle at 35% 30%, #ff8fa3, #b3122e);
+    }
+    .conic-corner-ruby--tl { top: 0.5rem; left: 0.5rem; }
+    .conic-corner-ruby--tr { top: 0.5rem; right: 0.5rem; }
+    .conic-corner-ruby--bl { bottom: 0.5rem; left: 0.5rem; }
+    .conic-corner-ruby--br { bottom: 0.5rem; right: 0.5rem; }
+
+    .venue-info-side {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+    }
+    @media (min-width: 900px) {
+      .venue-info-side { text-align: left; }
+    }
+    .venue-sub-join {
+      font-family: var(--font-script);
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      color: #f6d27a;
+    }
+    .venue-name-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 700;
+      color: #fff1b8;
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+      margin-top: 0.5rem;
+    }
+
+    .venue-details-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+    .venue-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(246, 210, 122, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .venue-detail-medallion {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: conic-gradient(#f6d27a, #8a5a12, #fff1b8, #b98321, #f6d27a);
+      padding: 3px;
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .venue-detail-medallion-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #c21a3c, #5c0816);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f6d27a;
+    }
+    .venue-detail-lbl {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #f6d27a;
+      display: block;
+    }
+    .venue-detail-val {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      color: #fff3dc;
+      line-height: 1.3;
+      display: block;
+    }
+
+    .venue-directions-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.85rem 2.25rem;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #5c0816;
+      background: linear-gradient(135deg, #fff1b8, #e3b44c 35%, #b98321 70%, #f2cf6e);
+      box-shadow: 0 8px 18px rgba(90, 10, 20, 0.45);
+      min-height: 44px;
+      transition: transform 0.2s;
+    }
+    .venue-directions-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Embedded Map Frame with Compass Rose */
+    .venue-map-stage {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      border-radius: 1.75rem;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(246, 210, 122, 0.35);
+    }
+    .venue-map-iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: sepia(0.28) saturate(1.2) hue-rotate(-10deg) contrast(1.03);
+    }
+    .venue-compass-rose {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 4rem;
+      height: 4rem;
+      pointer-events: none;
+      z-index: 10;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+
+    /* ============================================================
+       10. ROYAL RSVP CARD ("WILL YOU JOIN US–)
+       ============================================================ */
+    .rsvp-section {
+      padding: 5rem 1rem 6rem;
+    }
+    .rsvp-card-conic {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+      padding: 3px;
+      max-width: 40rem;
+      margin: 0 auto;
+      box-shadow: 0 30px 60px -20px rgba(90, 10, 20, 0.6);
+      background: radial-gradient(ellipse at 30% 20%, #a3172f 0%, #6d0a1d 45%, #3a0410 100%);
+    }
+    .rsvp-card-conic::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg, #f6d27a, #8a5a12 20%, #fff1b8 30%, #b98321 50%, #f6d27a 70%, #8a5a12 85%, #f6d27a);
+      animation: spinConic 18s linear infinite;
+    }
+
+    .rsvp-card-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(2rem - 3px);
+      background: radial-gradient(ellipse at 30% 20%, #a3172f 0%, #6d0a1d 45%, #3a0410 100%);
+      padding: 2.5rem 1.5rem;
+      color: #fff9eb;
+    }
+    @media (min-width: 768px) {
+      .rsvp-card-inner { padding: 3.5rem 3rem; }
+    }
+
+    .rsvp-polka-dots {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image: radial-gradient(circle, #f6d27a 1.2px, transparent 1.6px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .rsvp-header-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      color: #fff1b8;
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+      text-align: center;
+    }
+    .rsvp-header-couple {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #fbe3b4;
+      text-align: center;
+      margin-top: 0.25rem;
+    }
+
+    .rsvp-form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .rsvp-field-lbl {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #f6d27a;
+      margin-bottom: 0.5rem;
+    }
+
+    .rsvp-input {
+      width: 100%;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(246, 210, 122, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.85rem 1rem;
+      font-size: 1.1rem;
+      color: #fff3dc;
+      outline: none;
+      font-family: var(--font-serif);
+      transition: all 0.3s ease;
+      min-height: 44px;
+    }
+    .rsvp-input:focus {
+      border-color: #f6d27a;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(246, 210, 122, 0.25);
+    }
+    .rsvp-input::placeholder {
+      color: rgba(255, 243, 220, 0.45);
+    }
+
+    /* Guest Stepper Controls */
+    .rsvp-stepper-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(246, 210, 122, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+    }
+    .rsvp-step-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: conic-gradient(#f6d27a, #8a5a12, #fff1b8, #b98321, #f6d27a);
+      padding: 2px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rsvp-step-btn-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #c21a3c, #5c0816);
+      color: #f6d27a;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rsvp-step-val {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff1b8;
+    }
+
+    /* Attendance Radio Buttons */
+    .rsvp-radio-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    .rsvp-radio-label {
+      position: relative;
+      cursor: pointer;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(246, 210, 122, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.85rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff3dc;
+      transition: all 0.25s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rsvp-radio-label.is-selected {
+      background: rgba(246, 210, 122, 0.25);
+      border-color: #f6d27a;
+      color: #fff1b8;
+      box-shadow: 0 0 16px rgba(246, 210, 122, 0.35);
+    }
+    .rsvp-radio-input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .rsvp-submit-btn {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #5c0816;
+      background: linear-gradient(135deg, #fff1b8, #e3b44c 35%, #b98321 70%, #f2cf6e);
+      box-shadow: 0 8px 24px rgba(90, 10, 20, 0.55);
+      min-height: 44px;
+      transition: transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .rsvp-submit-btn:hover {
+      transform: scale(1.02);
+    }
+
+    /* RSVP Success State ("Dhanyavaad!") */
+    .rsvp-success-box {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .rsvp-success-seal {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      margin: 0 auto;
+      background: radial-gradient(circle at 35% 30%, #fff1b8, #e3b44c 45%, #9c6a17);
+      color: #a3172f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(246, 210, 122, 0.6);
+      animation: pulseSeal 1.6s ease-in-out infinite;
+    }
+    @keyframes pulseSeal {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .rsvp-success-title {
+      font-family: var(--font-script);
+      font-size: clamp(3.25rem, 8vw, 4.5rem);
+      color: #fff1b8;
+      background: linear-gradient(135deg, #fff1b8, #f6d27a, #dea645);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 1.5rem;
+    }
+    .rsvp-success-msg {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: #fff3dc;
+      margin-top: 0.75rem;
+    }
+    .rsvp-success-note {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #fbe3b4;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================================
+       11. CONTACT & GUEST ADVISORY (LOGISTICS)
+       ============================================================ */
+    .logistics-section {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 4rem 1rem 6rem;
+    }
+    .contact-cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .contact-card {
+      width: 100%;
+      max-width: 20rem;
+      background: #ffffff;
+      border: 1px solid rgba(222, 166, 69, 0.45);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(44, 26, 20, 0.08);
+    }
+    .contact-card-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: #9e141e;
+      font-weight: 700;
+    }
+    .contact-card-rel {
+      font-family: var(--font-script);
+      font-size: 1.35rem;
+      color: #b16f23;
+      margin-top: 0.25rem;
+    }
+    .contact-card-phone {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: #8a5a12;
+      margin-top: 0.5rem;
+    }
+    .contact-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .contact-pill-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #5c0816;
+      background: linear-gradient(135deg, #fff1b8, #e3b44c 35%, #b98321 70%, #f2cf6e);
+      text-decoration: none;
+      min-height: 44px;
+    }
+    .contact-pill-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #9e141e;
+      border: 1px solid rgba(158, 20, 30, 0.6);
+      text-decoration: none;
+      min-height: 44px;
+    }
+
+    /* Advisory 4-Grid */
+    .advisory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) {
+      .advisory-grid { grid-template-columns: 1fr; }
+    }
+    .advisory-card {
+      background: #ffffff;
+      border: 1px solid rgba(222, 166, 69, 0.35);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(44, 26, 20, 0.06);
+    }
+    .advisory-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .advisory-icon-disc {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dea645, #f7df96);
+      color: #39150f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .advisory-title {
+      font-family: var(--font-editorial);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2c1a14;
+    }
+    .advisory-desc {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: #5f3b2f;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       12. CLOSING BLESSING & DESERT FOLK FOOTER
+       ============================================================ */
+    .closing-blessing-section {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+    .closing-sub {
+      font-family: var(--font-script);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      color: #b16f23;
+    }
+    .closing-names {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #9e141e;
+      margin-top: 0.75rem;
+    }
+    .closing-date {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 2vw, 1.15rem);
+      letter-spacing: 0.15em;
+      color: #8a5a12;
+      margin-top: 1rem;
+    }
+    .closing-hashtag {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: #9e141e;
+      margin-top: 0.5rem;
+    }
+
+    .desert-footer {
+      position: relative;
+      margin-top: -1rem;
+      overflow: hidden;
+    }
+    .desert-folk-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ============================================================
+       13. FLOATING MUSIC TOGGLE WIDGET (SAFE AREA COMPLIANT)
+       ============================================================ */
+    .royal-audio-widget {
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      right: 20px;
+      z-index: 99995;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(8, 14, 44, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 16px 8px 10px;
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+      border: 1px solid #dea645;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease-royal), box-shadow 0.25s;
+      min-height: 44px;
+    }
+    .royal-audio-widget:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 34px rgba(222, 166, 69, 0.45);
+    }
+    .royal-audio-disc {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dea645, #f7df96, #b16f23);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #39150f;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(222, 166, 69, 0.4);
+    }
+    .royal-audio-widget.is-playing .royal-audio-disc {
+      animation: spinAudioDisc 5s linear infinite;
+    }
+    @keyframes spinAudioDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .royal-audio-waves {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 16px;
+    }
+    .royal-audio-bar {
+      width: 3px;
+      height: 4px;
+      background: #dea645;
+      border-radius: 2px;
+      transition: height 0.2s;
+    }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(1) { animation: waveBar 1s infinite 0.1s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(2) { animation: waveBar 1s infinite 0.3s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(3) { animation: waveBar 1s infinite 0.2s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(4) { animation: waveBar 1s infinite 0.4s; }
+    @keyframes waveBar {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .royal-audio-text {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #f7df96;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @media (max-width: 480px) {
+      .royal-audio-widget {
+        padding: 6px 12px 6px 8px;
+        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        right: 14px;
+      }
+      .royal-audio-disc { width: 30px; height: 30px; }
+      .royal-audio-text { font-size: 10px; }
+    }
+
+    /* ============================================================
+       14. GLOBAL SCROLL-REVEAL UTILITY MOTION SYSTEM
+       ============================================================ */
+    [data-reveal="up"] {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+      transition: opacity 1.0s var(--ease-reveal), transform 1.0s var(--ease-reveal);
+      will-change: transform, opacity;
+    }
+    [data-reveal="up"].is-revealed {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    [data-reveal="left"] {
+      opacity: 0;
+      transform: translate3d(-60px, 0, 0);
+      transition: opacity 1.2s var(--ease-reveal), transform 1.2s var(--ease-reveal);
+      will-change: transform, opacity;
+    }
+    [data-reveal="left"].is-revealed {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    [data-reveal="right"] {
+      opacity: 0;
+      transform: translate3d(60px, 0, 0);
+      transition: opacity 1.2s var(--ease-reveal), transform 1.2s var(--ease-reveal);
+      will-change: transform, opacity;
+    }
+    [data-reveal="right"].is-revealed {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .gate-overlay.is-opening .gate-stage { transform: none !important; }
+      .gate-overlay.is-opening .gate-door--left,
+      .gate-overlay.is-opening .gate-door--right { transform: none !important; }
+      .jharokha-arch-frame.is-opened .jharokha-shutter--left,
+      .jharokha-arch-frame.is-opened .jharokha-shutter--right,
+      .elder-jharokha-box.is-opened .jharokha-shutter--left,
+      .elder-jharokha-box.is-opened .jharokha-shutter--right {
+        transform: none !important;
+        opacity: 0 !important;
+      }
+      .unrolling-scroll-card .scroll-body-layer { clip-path: none !important; }
+      .unrolling-scroll-card .scroll-bottom-roller { transform: none !important; }
+      .unrolling-scroll-card .scroll-body-content { opacity: 1 !important; transform: none !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    }
+  

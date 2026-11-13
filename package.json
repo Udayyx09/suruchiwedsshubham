@@ -1,0 +1,34 @@
+{
+  "name": "royal-gateway",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Interactive 3D Luxury Rajasthani Palace Wedding Invitation Website in React & Vite",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "wedding-invitation",
+    "react",
+    "vite",
+    "interactive-invitation",
+    "3d-animation",
+    "rajasthani-palace",
+    "royal-gateway",
+    "luxury-invitation"
+  ],
+  "author": "Antigravity & Pair Developer",
+  "license": "MIT",
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
