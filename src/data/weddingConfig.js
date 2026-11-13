@@ -10,7 +10,7 @@ export const weddingConfig = {
 
   // Hosts
   hosts: {
-    parents: 'Dashrath Singh Kushwah & Priya Kushwah',
+    parents: 'Dashrath Singh Kushwaha & Priya Kushwaha',
     tagline: 'Together with their families, we cordially invite you to celebrate the wedding of'
   },
 
@@ -18,10 +18,10 @@ export const weddingConfig = {
   couple: {
     bride: {
       name: 'Suruchi',
-      fullName: 'Suruchi Kushwah',
+      fullName: 'Suruchi Kushwaha',
       shortName: 'Suruchi',
       role: 'The Bride',
-      parents: 'Daughter of Smt. Priya & Sh. Dashrath Singh Kushwah',
+      parents: 'Daughter of Smt. Priya & Sh. Dashrath Singh Kushwaha',
       photo: '/assets/gallery/couple.jpg',
       photoPosition: '20% 32%',
       photoScale: 1.7
@@ -41,14 +41,14 @@ export const weddingConfig = {
   // Ancestral Grace / Elders
   elders: {
     familyElder1: {
-      name: 'Sh. Dashrath Singh Kushwah',
-      badge: 'Head of Family • Kushwah House',
+      name: 'Sh. Dashrath Singh Kushwaha',
+      badge: 'Head of Family • Kushwaha House',
       blessing: '“With eternal blessings and love as our children begin their beautiful journey together.”',
       photo: '/assets/family-man.webp'
     },
     familyElder2: {
-      name: 'Smt. Priya Kushwah',
-      badge: 'Mother • Kushwah House',
+      name: 'Smt. Priya Kushwaha',
+      badge: 'Mother • Kushwaha House',
       blessing: '“May God bless Suruchi and Shubham with lifelong joy, health, and togetherness.”',
       photo: '/assets/family-woman.webp'
     }
@@ -150,13 +150,13 @@ export const weddingConfig = {
   // Family Contacts & Logistics
   contacts: [
     {
-      name: 'Dashrath Singh Kushwah',
+      name: 'Dashrath Singh Kushwaha',
       role: 'Family Coordinator / Host',
       phone: '+91 98290 12345',
       waNumber: '918959226985'
     },
     {
-      name: 'Priya Kushwah',
+      name: 'Priya Kushwaha',
       role: 'Host & Coordinator',
       phone: '+91 98291 67890',
       waNumber: '918959226985'
