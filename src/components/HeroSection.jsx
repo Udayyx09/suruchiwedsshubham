@@ -100,7 +100,7 @@ export default function HeroSection({ isRevealed }) {
           <span className="section-ornament-line" />
         </div>
         <div className="hero-date-pill" style={{ marginTop: '1.25rem' }}>
-          <p className="hero-date-text">{weddingConfig.dates.displayRange}</p>
+          <p className="hero-date-text">{weddingConfig.dates.heroDate}</p>
           <p className="hero-venue-text">{weddingConfig.dates.venueLine}</p>
         </div>
         <a 

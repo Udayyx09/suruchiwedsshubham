@@ -19,14 +19,6 @@ export default function TopBanner() {
         >
           &#8593; Gate Entrance
         </button>
-        <a 
-          href={`https://wa.me/${weddingConfig.rsvpWhatsAppNumber}?text=Hi%20Dashrath%20Singh%20ji,%20heartiest%20congratulations%20on%20Suruchi%20and%20Shubham's%20wedding!`} 
-          className="tci-btn-whatsapp" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          <span>Send Blessings</span>
-        </a>
       </div>
     </aside>
   );

@@ -60,6 +60,7 @@ export const weddingConfig = {
     targetCountdownISO: '2026-12-07T15:00:00+05:30',
     mainWeddingDateISO: '2026-12-09T18:00:00+05:30',
     displayRange: 'December 7 – 9, 2026',
+    heroDate: 'December 9, 2026',
     mainDayDisplay: 'Wednesday, 9 December 2026',
     venueLine: 'Vani Banquet Hall & Marriage Garden • Bhopal',
     muhuratTime: 'Wednesday, 9 Dec • Baraat & Panigrahan Sanskar'
