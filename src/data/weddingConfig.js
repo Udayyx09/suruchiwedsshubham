@@ -112,9 +112,9 @@ export const weddingConfig = {
       note: 'Auspicious Golden Turmeric & Floral Blessings',
       date: 'Tuesday, 8 December 2026',
       time: '03:00 PM Onwards',
-      venue: 'Family Residence / Celebration Lawn, Bhopal',
+      venue: 'Vani Banquet Hall & Marriage Garden, Bhopal',
       dateCallout: '8 Dec',
-      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
+      mapLink: 'https://www.google.com/maps/search/?api=1&query=Vani+Banquet+Hall+and+Marriage+Garden+near+Lilawati+Hospital+Islam+Nagar+Bhopal'
     },
     {
       eventTag: 'EVENT 4',
@@ -123,9 +123,9 @@ export const weddingConfig = {
       note: 'Musical Extravaganza, Folk Rhythms & Dance Soirée',
       date: 'Tuesday, 8 December 2026',
       time: '07:00 PM Onwards',
-      venue: 'Vani Banquet Hall, Bhopal',
+      venue: 'Vani Banquet Hall & Marriage Garden, Bhopal',
       dateCallout: '8 Dec',
-      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
+      mapLink: 'https://www.google.com/maps/search/?api=1&query=Vani+Banquet+Hall+and+Marriage+Garden+near+Lilawati+Hospital+Islam+Nagar+Bhopal'
     },
     {
       eventTag: 'EVENT 5',
@@ -136,7 +136,7 @@ export const weddingConfig = {
       time: 'Evening Onwards (Baraat & Panigrahan)',
       venue: 'Vani Banquet Hall & Marriage Garden, Bhopal',
       dateCallout: '9 Dec',
-      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
+      mapLink: 'https://www.google.com/maps/search/?api=1&query=Vani+Banquet+Hall+and+Marriage+Garden+near+Lilawati+Hospital+Islam+Nagar+Bhopal'
     }
   ],
 
