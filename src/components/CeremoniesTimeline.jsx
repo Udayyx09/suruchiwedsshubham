@@ -95,7 +95,7 @@ export default function CeremoniesTimeline() {
                       <p className="scroll-meta-line">&#128338; {ceremony.time}</p>
                       <p className="scroll-venue-line">&#128205; {ceremony.venue}</p>
                       <a 
-                        href={`https://maps.google.com/?q=${ceremony.mapQuery}`} 
+                        href={ceremony.mapLink || weddingConfig.homeLocationLink || 'https://maps.app.goo.gl/vLZiko55cekM32is6'} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="scroll-map-btn"

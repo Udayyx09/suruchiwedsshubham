@@ -78,6 +78,9 @@ export const weddingConfig = {
     embedUrl: 'https://maps.google.com/maps?q=Vani+Banquet+Hall+and+Marriage+Garden,+near+Lilawati+Hospital,+Islam+Nagar,+Bhopal&t=&z=15&ie=UTF8&iwloc=&output=embed'
   },
 
+  // Home Location Link
+  homeLocationLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6',
+
   // Wedding Celebrations Schedule (Page 2 of invite)
   ceremonies: [
     {
@@ -89,7 +92,7 @@ export const weddingConfig = {
       time: '03:00 PM Onwards',
       venue: 'Family Residence, Bhopal',
       dateCallout: '7 Dec',
-      mapQuery: 'Islam+Nagar+Bhopal'
+      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
     },
     {
       eventTag: 'EVENT 2',
@@ -100,7 +103,7 @@ export const weddingConfig = {
       time: '09:00 AM Onwards',
       venue: 'Family Residence, Bhopal',
       dateCallout: '8 Dec',
-      mapQuery: 'Islam+Nagar+Bhopal'
+      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
     },
     {
       eventTag: 'EVENT 3',
@@ -111,7 +114,7 @@ export const weddingConfig = {
       time: '03:00 PM Onwards',
       venue: 'Family Residence / Celebration Lawn, Bhopal',
       dateCallout: '8 Dec',
-      mapQuery: 'Islam+Nagar+Bhopal'
+      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
     },
     {
       eventTag: 'EVENT 4',
@@ -122,7 +125,7 @@ export const weddingConfig = {
       time: '07:00 PM Onwards',
       venue: 'Vani Banquet Hall, Bhopal',
       dateCallout: '8 Dec',
-      mapQuery: 'Vani+Banquet+Hall+Near+Lilawati+Hospital+Islam+Nagar+Bhopal'
+      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
     },
     {
       eventTag: 'EVENT 5',
@@ -133,7 +136,7 @@ export const weddingConfig = {
       time: 'Evening Onwards (Baraat & Panigrahan)',
       venue: 'Vani Banquet Hall & Marriage Garden, Bhopal',
       dateCallout: '9 Dec',
-      mapQuery: 'Vani+Banquet+Hall+Near+Lilawati+Hospital+Islam+Nagar+Bhopal'
+      mapLink: 'https://maps.app.goo.gl/vLZiko55cekM32is6'
     }
   ],
 
