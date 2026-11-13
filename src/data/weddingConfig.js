@@ -153,14 +153,14 @@ export const weddingConfig = {
     {
       name: 'Dashrath Singh Kushwaha',
       role: 'Family Coordinator / Host',
-      phone: '+91 98290 12345',
-      waNumber: '918959226985'
+      phone: '+91 98260 83233',
+      waNumber: '919826083233'
     },
     {
       name: 'Priya Kushwaha',
       role: 'Host & Coordinator',
-      phone: '+91 98291 67890',
-      waNumber: '918959226985'
+      phone: '+91 97707 62197',
+      waNumber: '919770762197'
     }
   ],
 
@@ -190,6 +190,6 @@ export const weddingConfig = {
 
   // Social & RSVP Settings
   hashtag: '#SuruchiWedsShubham',
-  rsvpWhatsAppNumber: '918959226985',
+  rsvpWhatsAppNumber: '919826083233',
   audioTrackUrl: '/assets/audio/shehnai_sitar_royale.mp3'
 };
