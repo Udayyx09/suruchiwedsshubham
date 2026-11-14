@@ -178,7 +178,7 @@
       align-items: center;
       justify-content: center;
       transition: opacity 1.2s ease, visibility 1.2s ease;
-      padding-top: 50px;
+      padding-top: 0;
     }
     .gate-overlay.is-hidden {
       opacity: 0;
@@ -1430,6 +1430,7 @@
 
     /* Dynamic Unrolling Velvet Scroll Card (1024 / 1536 aspect) */
     .unrolling-scroll-card {
+      container-type: inline-size;
       position: relative;
       aspect-ratio: 1024 / 1536;
       width: 100%;
@@ -2500,6 +2501,177 @@
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
+
+    
+    /* ============================================================
+       MOBILE PHONES DEDICATED RESPONSIVE SYSTEM (<= 640px & <= 480px)
+       ============================================================ */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    @media (max-width: 640px) {
+      /* Couple Section: Stack Jharokhas cleanly for phone screens */
+      .couple-grid {
+        grid-template-columns: 1fr;
+        max-width: 22rem;
+        margin: 0 auto;
+        gap: 2.5rem;
+      }
+      .jharokha-arch-frame {
+        max-width: 18rem;
+        margin: 0 auto;
+      }
+
+      /* Hero Typography & Date Pill */
+      .hero-couple-name {
+        font-size: clamp(2.4rem, 8.5vw, 4.25rem);
+      }
+      .hero-date-pill {
+        max-width: 92%;
+        padding: 0.65rem 1.25rem;
+        border-radius: 9999px;
+      }
+      .hero-venue-text {
+        font-size: clamp(0.72rem, 2.5vw, 0.9rem);
+        line-height: 1.3;
+      }
+
+      /* Venue Section */
+      .venue-section {
+        padding: 3rem 1rem 4rem;
+      }
+      .venue-card-inner {
+        padding: 2rem 1.15rem;
+        gap: 1.75rem;
+      }
+      .venue-name-title {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Peacock Gate on Small Screens */
+      .gate-couple-title {
+        font-size: clamp(1.9rem, 6.5vw, 3.2rem);
+        padding: 0 1rem;
+        text-align: center;
+      }
+      .gate-seal-cta {
+        transform: translate3d(-50%, -46%, 0);
+      }
+      .gate-seal-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+      }
+
+      /* Countdown 4-Tile Grid on Phone */
+      .countdown-grid {
+        gap: 0.35rem;
+        max-width: 100%;
+      }
+      .countdown-tile {
+        border-radius: 36px 36px 12px 12px;
+        padding: 0.4rem 0.15rem;
+      }
+      .countdown-num {
+        font-size: clamp(1.25rem, 5.2vw, 1.8rem);
+      }
+      .countdown-lbl {
+        font-size: 0.52rem;
+        letter-spacing: 0.12em;
+        margin-top: 0.2rem;
+      }
+      .countdown-wrap {
+        padding: 0 0.5rem;
+      }
+
+      /* Itinerary Scrolls on Mobile */
+      .ceremony-row {
+        grid-template-columns: 2rem 1fr;
+        gap: 0.5rem;
+      }
+      .timeline-vertical-line {
+        left: 1rem;
+      }
+      .timeline-car-tracker {
+        left: 1rem;
+        width: 2.25rem;
+      }
+      .scroll-body-content {
+        inset: 12% 14% 8%;
+      }
+      .scroll-event-title {
+        font-size: clamp(1.05rem, 5.2cqw, 1.55rem);
+        margin-top: 0.25rem;
+      }
+      .scroll-event-note {
+        font-size: clamp(0.95rem, 4.2cqw, 1.35rem);
+        margin-top: 0.2rem;
+      }
+      .scroll-meta-line {
+        font-size: clamp(0.75rem, 3cqw, 0.95rem);
+        line-height: 1.25;
+      }
+      .scroll-venue-line {
+        font-size: clamp(0.75rem, 3cqw, 0.95rem);
+        line-height: 1.25;
+        margin-top: 0.25rem;
+      }
+      .scroll-map-btn {
+        font-size: 0.65rem;
+        padding: 0.35rem 0.85rem;
+        min-height: 40px;
+        margin-top: 0.4rem;
+      }
+
+      /* 3D Gallery Carousel Thumbnails & Controls */
+      .gallery-controls-row {
+        gap: 0.35rem;
+      }
+      .gallery-thumbs-group {
+        gap: 0.25rem;
+      }
+      .gallery-thumb-btn {
+        width: 1.75rem;
+        height: 2.85rem;
+      }
+      .gallery-thumb-btn.is-active {
+        width: 2.05rem;
+        height: 3.3rem;
+      }
+      .gallery-nav-arrow {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+      .gallery-caption-banner {
+        padding: 0.75rem 1.25rem 0.65rem;
+      }
+      .gallery-caption-title {
+        font-size: 1.1rem;
+      }
+
+      /* Contact Cards */
+      .contact-card {
+        padding: 1.25rem 0.75rem;
+      }
+      .contact-card-name {
+        font-size: 1.15rem;
+      }
+      .contact-pill-call, .contact-pill-wa {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.75rem;
+      }
+
+      /* Desert Footer & Blessings */
+      .closing-names {
+        font-size: clamp(2rem, 7vw, 3.2rem);
+      }
+    }
+
 
     /* Accessibility: Respect Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
