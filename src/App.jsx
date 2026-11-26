@@ -22,6 +22,8 @@ export default function App() {
 
   const isAutoScrollingRef = useRef(false);
   const animationFrameIdRef = useRef(null);
+  const autoResumeTimerRef = useRef(null);
+  const hasEnteredRef = useRef(false);
   const lastTimestampRef = useRef(0);
   const currentScrollYRef = useRef(0);
 
@@ -136,8 +138,32 @@ export default function App() {
     animationFrameIdRef.current = requestAnimationFrame(scrollLoop);
   }, [pauseAutoScroll]);
 
+  // Schedule automatic resumption after user stops manual scrolling
+  const scheduleAutoResume = useCallback((delay = 1400) => {
+    if (autoResumeTimerRef.current) {
+      clearTimeout(autoResumeTimerRef.current);
+      autoResumeTimerRef.current = null;
+    }
+
+    if (!hasEnteredRef.current) return;
+
+    autoResumeTimerRef.current = setTimeout(() => {
+      if (!hasEnteredRef.current) return;
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const currentY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      // Only resume if not already at the bottom of the page
+      if (currentY < maxScroll - 20) {
+        startAutoScroll();
+      }
+    }, delay);
+  }, [startAutoScroll]);
+
   const toggleAutoScroll = useCallback(() => {
     if (isAutoScrollingRef.current) {
+      if (autoResumeTimerRef.current) {
+        clearTimeout(autoResumeTimerRef.current);
+        autoResumeTimerRef.current = null;
+      }
       pauseAutoScroll();
     } else {
       const maxScroll = Math.max(
@@ -158,15 +184,17 @@ export default function App() {
     }
   }, [pauseAutoScroll, startAutoScroll]);
 
-  // Pause autoscroll ONLY on deliberate user manual scroll gestures (wheel, drag touchmove, arrows)
+  // Handle manual user interactions: pause during manual scroll, and auto-restart when scrolling stops
   useEffect(() => {
     let touchStartY = null;
 
     const handleWheel = (e) => {
-      if (Math.abs(e.deltaY) > 3) {
+      if (Math.abs(e.deltaY) > 2) {
         if (isAutoScrollingRef.current) {
           pauseAutoScroll();
         }
+        // When user scrolls again, automatically restart autoscroll once scrolling stops
+        scheduleAutoResume(1400);
       }
     };
 
@@ -179,12 +207,22 @@ export default function App() {
     const handleTouchMove = (e) => {
       if (e.touches && e.touches[0] && touchStartY !== null) {
         const delta = Math.abs(e.touches[0].clientY - touchStartY);
-        if (delta > 12) {
+        if (delta > 8) {
           if (isAutoScrollingRef.current) {
             pauseAutoScroll();
           }
+          if (autoResumeTimerRef.current) {
+            clearTimeout(autoResumeTimerRef.current);
+            autoResumeTimerRef.current = null;
+          }
         }
       }
+    };
+
+    const handleTouchEnd = () => {
+      touchStartY = null;
+      // User lifted finger from screen; resume autoscroll after 1.4s grace period
+      scheduleAutoResume(1400);
     };
 
     const handleKeyDown = (e) => {
@@ -192,24 +230,30 @@ export default function App() {
         if (isAutoScrollingRef.current) {
           pauseAutoScroll();
         }
+        scheduleAutoResume(1400);
       }
     };
 
     window.addEventListener('wheel', handleWheel, { passive: true });
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('keydown', handleKeyDown);
+      if (autoResumeTimerRef.current) {
+        clearTimeout(autoResumeTimerRef.current);
+      }
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
     };
-  }, [pauseAutoScroll]);
+  }, [pauseAutoScroll, scheduleAutoResume]);
 
   const handleOpenGate = () => {
     if (audioWidgetRef.current) {
@@ -222,6 +266,7 @@ export default function App() {
   };
 
   const handleGateDismissed = () => {
+    hasEnteredRef.current = true;
     setTourVisible(true);
     // Allow user to take in the royal palace entrance for 400ms, then start cinematic autoscroll
     setTimeout(() => {
