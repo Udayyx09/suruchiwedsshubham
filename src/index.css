@@ -1755,6 +1755,147 @@
     }
 
     /* ============================================================
+       12B. GALLERY LIGHTBOX & FULLSCREEN ZOOM
+       ============================================================ */
+    .gallery-zoom-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(14, 8, 4, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff1b8;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(222, 166, 69, 0.6);
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease;
+    }
+    .gallery-viewport:hover .gallery-zoom-badge {
+      transform: scale(1.05);
+    }
+    .gallery-lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: rgba(8, 4, 2, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      animation: fadeInModal 0.25s ease-out forwards;
+    }
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .gallery-lightbox-content {
+      position: relative;
+      max-width: min(92vw, 560px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      background: #160c08;
+      border: 2px solid #dea645;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(222, 166, 69, 0.3);
+      padding: 12px;
+    }
+    .gallery-lightbox-img {
+      max-width: 100%;
+      max-height: calc(80vh - 80px);
+      object-fit: contain;
+      border-radius: 14px;
+    }
+    .gallery-lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #39150f;
+      border: 2px solid #dea645;
+      color: #f7df96;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s;
+      z-index: 20;
+    }
+    .gallery-lightbox-close:hover {
+      transform: scale(1.1);
+      background: #a3172f;
+    }
+    .gallery-lightbox-info {
+      margin-top: 10px;
+      text-align: center;
+      width: 100%;
+    }
+    .gallery-lightbox-caption {
+      font-family: var(--font-display);
+      color: #fff1b8;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .gallery-lightbox-counter {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #dea645;
+      margin-top: 3px;
+    }
+    .gallery-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 6px;
+      pointer-events: none;
+    }
+    .gallery-lightbox-arrow {
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(30, 10, 5, 0.85);
+      border: 1.5px solid #dea645;
+      color: #fff1b8;
+      font-size: 24px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .gallery-lightbox-arrow:hover {
+      transform: scale(1.1);
+      background: #a3172f;
+    }
+
+
+    /* ============================================================
        9. THE VENUE & INTERACTIVE GOOGLE MAP (WHERE HEARTS UNITE)
        ============================================================ */
     .venue-section {

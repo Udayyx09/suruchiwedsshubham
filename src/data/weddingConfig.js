@@ -22,9 +22,9 @@ export const weddingConfig = {
       shortName: 'Suruchi',
       role: 'The Bride',
       parents: 'Daughter of Smt. Priya & Sh. Dashrath Singh Kushwaha',
-      photo: '/assets/gallery/couple.jpg',
-      photoPosition: '20% 32%',
-      photoScale: 1.7
+      photo: '/assets/gallery/photo_4_bride_suruchi.jpg',
+      photoPosition: '50% 18%',
+      photoScale: 1.0
     },
     groom: {
       name: 'Shubham',
@@ -32,9 +32,9 @@ export const weddingConfig = {
       shortName: 'Shubham',
       role: 'The Groom',
       parents: 'Together with his loving family',
-      photo: '/assets/gallery/couple.jpg',
-      photoPosition: '85% 20%',
-      photoScale: 1.7
+      photo: '/assets/gallery/photo_6_groom_shubham.jpg',
+      photoPosition: '50% 20%',
+      photoScale: 1.0
     }
   },
 
@@ -142,13 +142,17 @@ export const weddingConfig = {
 
   // 3D Photo Carousel
   gallery: [
-    { url: '/assets/gallery/couple.jpg', caption: 'Suruchi & Shubham' },
-    { url: '/assets/gallery/courtyard.jpg', caption: 'The Palace Courtyard' },
-    { url: '/assets/gallery/mandap.jpg', caption: 'The Sacred Mandap' },
-    { url: '/assets/gallery/haldi.jpg', caption: 'Haldi Morning' },
-    { url: '/assets/gallery/lake.jpg', caption: 'Evening Celebrations' },
-    { url: '/assets/gallery/jharokha.jpg', caption: 'The Jharokha' },
-    { url: '/assets/gallery/gate.jpg', caption: 'Grand Welcome Gates' }
+    { url: '/assets/gallery/photo_1_sunset_embrace.jpg', caption: 'A Promise at Sunset • Suruchi & Shubham' },
+    { url: '/assets/gallery/photo_2_holy_river_diya.jpg', caption: 'Sacred Aarti at River Ghats' },
+    { url: '/assets/gallery/photo_3_palace_jharokha_arch.jpg', caption: 'Gilded Palace Jharokha' },
+    { url: '/assets/gallery/photo_4_bride_suruchi.jpg', caption: 'The Radiant Bride • Suruchi' },
+    { url: '/assets/gallery/photo_5_palace_stairs_walk.jpg', caption: 'Stepping into Forever Together' },
+    { url: '/assets/gallery/photo_6_groom_shubham.jpg', caption: 'The Regal Groom • Shubham' },
+    { url: '/assets/gallery/photo_7_sunset_reflection.jpg', caption: 'Golden Reflections at Twilight' },
+    { url: '/assets/gallery/photo_8_temple_steps_serenade.jpg', caption: 'Devotion & Grace at the Royal Shrine' },
+    { url: '/assets/gallery/photo_9_temple_steps_hand_in_hand.jpg', caption: 'Hand in Hand, Heart in Heart' },
+    { url: '/assets/gallery/photo_10_jharokha_window_promise.jpg', caption: 'Whispers of Love in Carved Stone' },
+    { url: '/assets/gallery/photo_11_palace_facade_together.jpg', caption: 'Together in Royal Grandeur' }
   ],
 
   // Family Contacts & Logistics
