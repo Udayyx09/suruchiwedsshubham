@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import ProgressBar from './components/ProgressBar';
 import GateOverlay from './components/GateOverlay';
+import AudioWidget from './components/AudioWidget';
 import FallingPetals from './components/FallingPetals';
 import DynamicRoyalBg from './components/DynamicRoyalBg';
 import HeroSection from './components/HeroSection';
@@ -13,6 +14,7 @@ import LogisticsSection from './components/LogisticsSection';
 import BlessingsFooter from './components/BlessingsFooter';
 
 export default function App() {
+  const audioWidgetRef = useRef(null);
   const [heroRevealed, setHeroRevealed] = useState(false);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [tourVisible, setTourVisible] = useState(false);
@@ -253,7 +255,9 @@ export default function App() {
   }, [pauseAutoScroll, scheduleAutoResume]);
 
   const handleOpenGate = () => {
-    // Gate opening triggered
+    if (audioWidgetRef.current) {
+      audioWidgetRef.current.play();
+    }
   };
 
   const handleHeroReveal = () => {
@@ -263,6 +267,10 @@ export default function App() {
   const handleGateDismissed = () => {
     hasEnteredRef.current = true;
     setTourVisible(true);
+    // Ensure music is playing
+    if (audioWidgetRef.current && !audioWidgetRef.current.isPlaying) {
+      audioWidgetRef.current.play();
+    }
     // Allow user to take in the royal palace entrance for 400ms, then start cinematic autoscroll
     setTimeout(() => {
       startAutoScroll();
@@ -281,7 +289,10 @@ export default function App() {
         onGateDismissed={handleGateDismissed}
       />
 
-      {/* 3. Ambient Falling Rose Petals Layer */}
+      {/* 3. Subtle Floating Royal Music Controller */}
+      <AudioWidget ref={audioWidgetRef} />
+
+      {/* 4. Ambient Falling Rose Petals Layer */}
       <FallingPetals />
 
       {/* 5. Dynamic Royal Jali Wallpaper & Blue Mandalas */}

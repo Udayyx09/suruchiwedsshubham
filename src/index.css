@@ -2618,7 +2618,7 @@
     }
 
     /* ============================================================
-       13. FLOATING MUSIC TOGGLE WIDGET (SAFE AREA COMPLIANT)
+       13. FLOATING ROYAL MUSIC AMULET (SAFE AREA COMPLIANT)
        ============================================================ */
     .royal-audio-widget {
       position: fixed;
@@ -2627,79 +2627,70 @@
       z-index: 99995;
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(8, 14, 44, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 8px 16px 8px 10px;
-      border-radius: 50px;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
-      border: 1px solid #dea645;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(20, 30, 75, 0.95), rgba(8, 14, 44, 0.98));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 0;
+      border: 1.5px solid #dea645;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55), 0 0 12px rgba(222, 166, 69, 0.3);
       cursor: pointer;
-      transition: transform 0.25s var(--ease-royal), box-shadow 0.25s;
-      min-height: 44px;
+      transition: transform 0.25s var(--ease-royal), box-shadow 0.25s, border-color 0.25s;
+      outline: none;
+      color: #f7df96;
     }
     .royal-audio-widget:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 34px rgba(222, 166, 69, 0.45);
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65), 0 0 18px rgba(222, 166, 69, 0.55);
+      border-color: #f7df96;
     }
-    .royal-audio-disc {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #dea645, #f7df96, #b16f23);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #39150f;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(222, 166, 69, 0.4);
+    .royal-audio-widget.is-playing {
+      animation: royalAudioGlow 2.5s infinite ease-in-out;
     }
-    .royal-audio-widget.is-playing .royal-audio-disc {
-      animation: spinAudioDisc 5s linear infinite;
-    }
-    @keyframes spinAudioDisc {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes royalAudioGlow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55), 0 0 10px rgba(222, 166, 69, 0.25); }
+      50% { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.65), 0 0 20px rgba(222, 166, 69, 0.6); }
     }
     .royal-audio-waves {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 3px;
-      height: 16px;
+      height: 18px;
+      width: 18px;
     }
     .royal-audio-bar {
-      width: 3px;
+      width: 2.5px;
       height: 4px;
-      background: #dea645;
+      background: linear-gradient(180deg, #f7df96, #dea645);
       border-radius: 2px;
       transition: height 0.2s;
     }
-    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(1) { animation: waveBar 1s infinite 0.1s; }
-    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(2) { animation: waveBar 1s infinite 0.3s; }
-    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(3) { animation: waveBar 1s infinite 0.2s; }
-    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(4) { animation: waveBar 1s infinite 0.4s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(1) { animation: waveBar 0.9s infinite ease-in-out 0.1s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(2) { animation: waveBar 0.9s infinite ease-in-out 0.3s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(3) { animation: waveBar 0.9s infinite ease-in-out 0.2s; }
+    .royal-audio-widget.is-playing .royal-audio-bar:nth-child(4) { animation: waveBar 0.9s infinite ease-in-out 0.4s; }
     @keyframes waveBar {
       0%, 100% { height: 4px; }
       50% { height: 16px; }
     }
-    .royal-audio-text {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
+    .royal-audio-muted-icon {
+      color: rgba(247, 223, 150, 0.7);
+      transition: color 0.2s;
+    }
+    .royal-audio-widget:hover .royal-audio-muted-icon {
       color: #f7df96;
-      text-transform: uppercase;
-      white-space: nowrap;
     }
     @media (max-width: 480px) {
       .royal-audio-widget {
-        padding: 6px 12px 6px 8px;
-        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-        right: 14px;
+        width: 40px;
+        height: 40px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
       }
-      .royal-audio-disc { width: 30px; height: 30px; }
-      .royal-audio-text { font-size: 10px; }
     }
 
     /* ============================================================
