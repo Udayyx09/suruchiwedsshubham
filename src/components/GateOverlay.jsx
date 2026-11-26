@@ -20,7 +20,7 @@ const EMBERS = [
   { left: '84%', duration: '11.4s', delay: '8.25s' }
 ];
 
-export default function GateOverlay({ onOpenGate, onHeroReveal }) {
+export default function GateOverlay({ onOpenGate, onHeroReveal, onGateDismissed }) {
   const [isOpening, setIsOpening] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [gateOpened, setGateOpened] = useState(false);
@@ -45,6 +45,9 @@ export default function GateOverlay({ onOpenGate, onHeroReveal }) {
     setTimeout(() => {
       setIsHidden(true);
       document.body.classList.remove('gate-locked');
+      if (onGateDismissed) {
+        onGateDismissed();
+      }
     }, 4600);
   };
 

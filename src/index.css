@@ -2467,6 +2467,101 @@
     }
 
     /* ============================================================
+       13B. FLOATING AUTO-TOUR CONTROLLER WIDGET
+       ============================================================ */
+    .royal-autoscroll-widget {
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      left: 20px;
+      z-index: 99995;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(8, 14, 44, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 16px 8px 12px;
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+      border: 1px solid #dea645;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease-royal), box-shadow 0.25s, opacity 0.4s ease;
+      min-height: 44px;
+      user-select: none;
+      animation: fadeInTourWidget 0.6s ease forwards;
+    }
+    @keyframes fadeInTourWidget {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .royal-autoscroll-widget:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 34px rgba(222, 166, 69, 0.45);
+    }
+    .royal-tour-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dea645, #f7df96, #b16f23);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #39150f;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(222, 166, 69, 0.4);
+    }
+    .royal-tour-text {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #f7df96;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .royal-tour-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+      animation: tourPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes tourPulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.6;
+      }
+    }
+    .royal-autoscroll-widget.is-paused .royal-tour-icon {
+      background: linear-gradient(135deg, #a8843c, #cca358);
+    }
+    @media (max-width: 480px) {
+      .royal-autoscroll-widget {
+        padding: 6px 12px 6px 10px;
+        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        left: 14px;
+      }
+      .royal-tour-icon {
+        width: 26px;
+        height: 26px;
+      }
+      .royal-tour-text {
+        font-size: 10px;
+      }
+    }
+
+    /* ============================================================
        14. GLOBAL SCROLL-REVEAL UTILITY MOTION SYSTEM
        ============================================================ */
     [data-reveal="up"] {
