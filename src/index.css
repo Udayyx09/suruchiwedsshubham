@@ -1106,6 +1106,77 @@
     .couple-card {
       text-align: center;
     }
+    /* Royal Couple Text-Only Card Presentation */
+    .couple-card-inner {
+      position: relative;
+      background: radial-gradient(ellipse at 50% 25%, #fffaf0 0%, #fcf3e3 50%, #f6e5cd 100%);
+      border: 2px solid #dea645;
+      border-radius: 36px;
+      padding: 3.5rem 2rem 3rem;
+      box-shadow: 0 16px 40px rgba(60, 20, 0, 0.12), inset 0 0 30px rgba(222, 166, 69, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 26rem;
+      margin: 0 auto;
+    }
+    .couple-card-inner:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(60, 20, 0, 0.18), inset 0 0 36px rgba(222, 166, 69, 0.25);
+    }
+    .couple-card-crest {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .couple-crest-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff1b8, #e3b44c 45%, #9c6a17);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(156, 106, 23, 0.35);
+      border: 2px solid #fff1b8;
+    }
+    .couple-crest-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .couple-role-pill {
+      display: inline-block;
+      padding: 0.35rem 1.8rem;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #9e141e;
+      background: rgba(158, 20, 30, 0.08);
+      border: 1px solid rgba(158, 20, 30, 0.28);
+      border-radius: 999px;
+      margin-bottom: 0.8rem;
+    }
+    .couple-filigree {
+      margin-top: 1.25rem;
+      color: #dea645;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .couple-filigree::before,
+    .couple-filigree::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #dea645);
+    }
+    .couple-filigree::after {
+      background: linear-gradient(90deg, #dea645, transparent);
+    }
+
 
     /* Jharokha Arch Frame Container with 3D Perspective */
     .jharokha-arch-frame {

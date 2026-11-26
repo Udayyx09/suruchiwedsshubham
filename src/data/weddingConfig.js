@@ -21,36 +21,14 @@ export const weddingConfig = {
       fullName: 'Suruchi Kushwaha',
       shortName: 'Suruchi',
       role: 'The Bride',
-      parents: 'Daughter of Smt. Priya & Sh. Dashrath Singh Kushwaha',
-      photo: '/assets/gallery/photo_4_bride_suruchi.jpg',
-      photoPosition: '50% 18%',
-      photoScale: 1.0
+      photo: null
     },
     groom: {
       name: 'Shubham',
       fullName: 'Shubham',
       shortName: 'Shubham',
       role: 'The Groom',
-      parents: 'Together with his loving family',
-      photo: '/assets/gallery/photo_6_groom_shubham.jpg',
-      photoPosition: '50% 20%',
-      photoScale: 1.0
-    }
-  },
-
-  // Ancestral Grace / Elders
-  elders: {
-    familyElder1: {
-      name: 'Sh. Dashrath Singh Kushwaha',
-      badge: 'Head of Family • Kushwaha House',
-      blessing: '“With eternal blessings and love as our children begin their beautiful journey together.”',
-      photo: '/assets/family-man.webp'
-    },
-    familyElder2: {
-      name: 'Smt. Priya Kushwaha',
-      badge: 'Mother • Kushwaha House',
-      blessing: '“May God bless Suruchi and Shubham with lifelong joy, health, and togetherness.”',
-      photo: '/assets/family-woman.webp'
+      photo: null
     }
   },
 
