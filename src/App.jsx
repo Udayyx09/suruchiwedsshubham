@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import ProgressBar from './components/ProgressBar';
 import GateOverlay from './components/GateOverlay';
-import AudioWidget from './components/AudioWidget';
-import AutoTourWidget from './components/AutoTourWidget';
 import FallingPetals from './components/FallingPetals';
 import DynamicRoyalBg from './components/DynamicRoyalBg';
 import HeroSection from './components/HeroSection';
@@ -15,7 +13,6 @@ import LogisticsSection from './components/LogisticsSection';
 import BlessingsFooter from './components/BlessingsFooter';
 
 export default function App() {
-  const audioWidgetRef = useRef(null);
   const [heroRevealed, setHeroRevealed] = useState(false);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [tourVisible, setTourVisible] = useState(false);
@@ -256,9 +253,7 @@ export default function App() {
   }, [pauseAutoScroll, scheduleAutoResume]);
 
   const handleOpenGate = () => {
-    if (audioWidgetRef.current) {
-      audioWidgetRef.current.play();
-    }
+    // Gate opening triggered
   };
 
   const handleHeroReveal = () => {
@@ -286,15 +281,7 @@ export default function App() {
         onGateDismissed={handleGateDismissed}
       />
 
-      {/* 3. Floating Interactive Controls: Auto-Tour Controller & Royal Music */}
-      <AutoTourWidget 
-        isActive={isAutoScrolling} 
-        isVisible={tourVisible} 
-        onToggle={toggleAutoScroll} 
-      />
-      <AudioWidget ref={audioWidgetRef} />
-
-      {/* 4. Ambient Falling Rose Petals Layer */}
+      {/* 3. Ambient Falling Rose Petals Layer */}
       <FallingPetals />
 
       {/* 5. Dynamic Royal Jali Wallpaper & Blue Mandalas */}

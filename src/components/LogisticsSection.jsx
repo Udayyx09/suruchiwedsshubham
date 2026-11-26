@@ -43,7 +43,7 @@ export default function LogisticsSection() {
         ))}
       </div>
 
-      {/* Advisory 4-Card Grid */}
+      {/* Advisory Cards Grid */}
       <div className="advisory-grid">
         {advisory.map((item, idx) => (
           <article key={idx} className="advisory-card" data-reveal="up">
@@ -51,7 +51,18 @@ export default function LogisticsSection() {
               <span className="advisory-icon-disc">{item.icon}</span>
               <h4 className="advisory-title">{item.title}</h4>
             </div>
-            <p className="advisory-desc">{item.description}</p>
+            {item.details ? (
+              <div className="advisory-dresscode-list">
+                {item.details.map((d, i) => (
+                  <div key={i} className="advisory-dresscode-row">
+                    <span className="advisory-dresscode-event">{d.event}</span>
+                    <span className="advisory-dresscode-val">{d.code}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="advisory-desc">{item.description}</p>
+            )}
           </article>
         ))}
       </div>

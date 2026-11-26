@@ -66,6 +66,7 @@ export const weddingConfig = {
       icon: '🪔',
       title: 'Ganesh Poojan & Mata Poojan',
       note: 'Sacred Vedic Prayers & Auspicious Beginnings',
+      dressCode: 'Red & White',
       date: 'Monday, 7 December 2026',
       time: '03:00 PM Onwards',
       venue: 'Family Residence, Bhopal',
@@ -88,6 +89,7 @@ export const weddingConfig = {
       icon: '🌼',
       title: 'Haldi Ceremony',
       note: 'Auspicious Golden Turmeric & Floral Blessings',
+      dressCode: 'Yellow',
       date: 'Tuesday, 8 December 2026',
       time: '03:00 PM Onwards',
       venue: 'Vani Banquet Hall & Marriage Garden, Bhopal',
@@ -157,19 +159,14 @@ export const weddingConfig = {
       description: 'Capture your favorite moments and tag them with #SuruchiWedsShubham so we can cherish every memory together.'
     },
     {
-      icon: '☀',
-      title: 'Bhopal Climate',
-      description: 'Bhopal in December brings pleasant sunny afternoons (24°C) and delightfully cool evenings (12°C). Light shawls or jackets recommended for night functions.'
-    },
-    {
-      icon: '🚗',
-      title: 'Valet & Parking',
-      description: 'Complimentary valet parking is arranged at Vani Banquet Hall & Marriage Garden main gate. Security staff will assist with parking.'
-    },
-    {
-      icon: '👗',
+      icon: '🥻',
       title: 'Dress Code',
-      description: 'Daytime functions: Bright festive yellows, pastels & traditional wear. Sangeet & Panigrahan: Grand Indian ethnic attire, sherwanis, and lehengas.'
+      description: 'Haldi: Yellow • Mata Poojan: Red & White • Sangeet & Vivah: Festive Indian Ethnic Attire',
+      details: [
+        { event: 'Mata Poojan', code: 'Red & White' },
+        { event: 'Haldi Ceremony', code: 'Yellow' },
+        { event: 'Sangeet & Vivah', code: 'Festive Indian Ethnic Attire' }
+      ]
     }
   ],
 

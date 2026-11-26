@@ -1,39 +1,52 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { weddingConfig } from '../data/weddingConfig';
 
 export default function CeremoniesTimeline() {
   const timelineWrapRef = useRef(null);
-  const [carTop, setCarTop] = useState('0%');
+  const carRef = useRef(null);
 
   useEffect(() => {
-    let ticking = false;
+    let rafId = null;
+
+    const updateCar = () => {
+      const wrap = timelineWrapRef.current;
+      const car = carRef.current;
+      if (!wrap || !car) return;
+
+      const wrapRect = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // Target screen anchor: car sits elegantly in upper-middle of screen (44% vh)
+      // perfectly matching the visual reading center of unrolling ceremony scrolls
+      const targetScreenY = vh * 0.44;
+      const carHeight = car.offsetHeight || 80;
+      // Let the car drive from start of track down to the final ceremony bullet
+      const maxTravel = Math.max(0, wrapRect.height - carHeight - 20);
+
+      let carY = targetScreenY - wrapRect.top;
+      if (carY < 0) carY = 0;
+      if (carY > maxTravel) carY = maxTravel;
+
+      car.style.transform = `translate3d(-50%, ${Math.round(carY)}px, 0)`;
+    };
 
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (timelineWrapRef.current) {
-            const wrapRect = timelineWrapRef.current.getBoundingClientRect();
-            const wrapTop = wrapRect.top;
-            const wrapHeight = wrapRect.height;
-            const vh = window.innerHeight;
-
-            const travelStart = vh * 0.7;
-            const totalDistance = wrapHeight;
-            const currentY = travelStart - wrapTop;
-            const travelProgress = Math.min(Math.max(currentY / totalDistance, 0), 1);
-
-            setCarTop(`${travelProgress * 92}%`);
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        updateCar();
+        rafId = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('resize', handleScroll, { passive: true });
+    updateCar();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -57,7 +70,7 @@ export default function CeremoniesTimeline() {
           className="timeline-car-tracker" 
           id="timelineCarTracker" 
           aria-hidden="true"
-          style={{ top: carTop }}
+          ref={carRef}
         >
           <img src="/assets/timeline-car.webp" alt="Wedding Procession Car" />
         </div>
@@ -93,6 +106,11 @@ export default function CeremoniesTimeline() {
                       </div>
                       <p className="scroll-meta-line">&#128197; {ceremony.date}</p>
                       <p className="scroll-meta-line">&#128338; {ceremony.time}</p>
+                      {ceremony.dressCode && (
+                        <p className="scroll-meta-line scroll-dress-line">
+                          &#128087; Dress Code: <strong style={{ color: '#ffe494' }}>{ceremony.dressCode}</strong>
+                        </p>
+                      )}
                       <p className="scroll-venue-line">&#128205; {ceremony.venue}</p>
                       <a 
                         href={ceremony.mapLink || weddingConfig.homeLocationLink || 'https://maps.app.goo.gl/vLZiko55cekM32is6'} 
