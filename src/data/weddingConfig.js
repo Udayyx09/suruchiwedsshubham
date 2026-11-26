@@ -120,6 +120,7 @@ export const weddingConfig = {
 
   // 3D Photo Carousel
   gallery: [
+    { url: '/assets/gallery/photo_9_temple_steps_hand_in_hand.jpg', caption: 'Hand in Hand, Heart in Heart • Suruchi & Shubham' },
     { url: '/assets/gallery/photo_1_sunset_embrace.jpg', caption: 'A Promise at Sunset • Suruchi & Shubham' },
     { url: '/assets/gallery/photo_2_holy_river_diya.jpg', caption: 'Sacred Aarti at River Ghats' },
     { url: '/assets/gallery/photo_3_palace_jharokha_arch.jpg', caption: 'Gilded Palace Jharokha' },
@@ -128,7 +129,6 @@ export const weddingConfig = {
     { url: '/assets/gallery/photo_6_groom_shubham.jpg', caption: 'The Regal Groom • Shubham' },
     { url: '/assets/gallery/photo_7_sunset_reflection.jpg', caption: 'Golden Reflections at Twilight' },
     { url: '/assets/gallery/photo_8_temple_steps_serenade.jpg', caption: 'Devotion & Grace at the Royal Shrine' },
-    { url: '/assets/gallery/photo_9_temple_steps_hand_in_hand.jpg', caption: 'Hand in Hand, Heart in Heart' },
     { url: '/assets/gallery/photo_10_jharokha_window_promise.jpg', caption: 'Whispers of Love in Carved Stone' },
     { url: '/assets/gallery/photo_11_palace_facade_together.jpg', caption: 'Together in Royal Grandeur' }
   ],
