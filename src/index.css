@@ -177,7 +177,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
       padding-top: 0;
     }
     .gate-overlay.is-hidden {
@@ -196,7 +196,7 @@
       transform-origin: 50.12% 69.18%;
       perspective: 1400px;
       perspective-origin: 50.12% 69.18%;
-      transition: transform 3.0s var(--ease-push), opacity 1.4s ease;
+      transition: transform 2.6s var(--ease-push), opacity 1.0s ease;
       will-change: transform;
     }
     .gate-overlay.is-opening .gate-stage {
@@ -429,7 +429,7 @@
       background: #ffe4b3;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 1.2s ease-in 3.3s;
+      transition: opacity 0.8s ease-in 1.6s;
       z-index: 15;
     }
     .gate-overlay.is-opening .gate-light-flood {

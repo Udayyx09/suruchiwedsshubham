@@ -20,9 +20,10 @@ export default function App() {
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [tourVisible, setTourVisible] = useState(false);
 
-  const autoScrollActiveRef = useRef(false);
+  const isAutoScrollingRef = useRef(false);
   const animationFrameIdRef = useRef(null);
-  const scrollAccumulatorRef = useRef(0);
+  const lastTimestampRef = useRef(0);
+  const currentScrollYRef = useRef(0);
 
   // Global Intersection Observer for reveals, Jharokha shutters, and unrolling scrolls
   useEffect(() => {
@@ -70,99 +71,140 @@ export default function App() {
     };
   }, []);
 
-  // Smooth Auto-Scrolling Controller
+  // Smooth Auto-Scrolling Controller with Instant RAF Execution
   const pauseAutoScroll = useCallback(() => {
-    if (!autoScrollActiveRef.current && !isAutoScrolling) return;
-    autoScrollActiveRef.current = false;
+    isAutoScrollingRef.current = false;
     setIsAutoScrolling(false);
-    document.documentElement.style.scrollBehavior = '';
     if (animationFrameIdRef.current) {
       cancelAnimationFrame(animationFrameIdRef.current);
       animationFrameIdRef.current = null;
     }
-  }, [isAutoScrolling]);
+  }, []);
 
   const startAutoScroll = useCallback(() => {
-    if (autoScrollActiveRef.current) return;
-    autoScrollActiveRef.current = true;
+    if (isAutoScrollingRef.current) return;
+    isAutoScrollingRef.current = true;
     setIsAutoScrolling(true);
-    document.documentElement.style.scrollBehavior = 'auto';
-    scrollAccumulatorRef.current = window.scrollY || window.pageYOffset || 0;
+    setTourVisible(true);
 
-    const scrollStep = () => {
-      if (!autoScrollActiveRef.current) return;
+    lastTimestampRef.current = performance.now();
+    currentScrollYRef.current = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
 
+    const scrollLoop = (timestamp) => {
+      if (!isAutoScrollingRef.current) return;
+
+      const elapsed = (timestamp - lastTimestampRef.current) / 1000;
+      lastTimestampRef.current = timestamp;
+
+      // Cap delta time to prevent large leaps if frame rate dips
+      const dt = Math.min(Math.max(elapsed, 0.001), 0.05);
+
+      // Speed: ~80 pixels/sec gives a graceful royal tour speed
+      const pixelsPerSecond = 80;
       const maxScroll = Math.max(
         0,
         document.documentElement.scrollHeight - window.innerHeight
       );
 
       // Reached near bottom of page
-      if (scrollAccumulatorRef.current >= maxScroll - 6) {
+      if (currentScrollYRef.current >= maxScroll - 4) {
+        window.scrollTo({ top: maxScroll, behavior: 'instant' });
         pauseAutoScroll();
         return;
       }
 
-      // Smooth cinematic travel speed: ~1.2px per frame (~72px/sec at 60Hz)
-      scrollAccumulatorRef.current += 1.2;
-      window.scrollTo(0, scrollAccumulatorRef.current);
+      // Sync with real scrollY if user subtly nudged it
+      const actualY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (Math.abs(actualY - currentScrollYRef.current) < 25) {
+        currentScrollYRef.current = actualY;
+      }
 
-      animationFrameIdRef.current = requestAnimationFrame(scrollStep);
+      currentScrollYRef.current += pixelsPerSecond * dt;
+
+      window.scrollTo({
+        top: currentScrollYRef.current,
+        behavior: 'instant'
+      });
+
+      if (document.documentElement.scrollTop !== currentScrollYRef.current) {
+        document.documentElement.scrollTop = currentScrollYRef.current;
+      }
+
+      animationFrameIdRef.current = requestAnimationFrame(scrollLoop);
     };
 
-    animationFrameIdRef.current = requestAnimationFrame(scrollStep);
+    animationFrameIdRef.current = requestAnimationFrame(scrollLoop);
   }, [pauseAutoScroll]);
 
   const toggleAutoScroll = useCallback(() => {
-    if (autoScrollActiveRef.current) {
+    if (isAutoScrollingRef.current) {
       pauseAutoScroll();
     } else {
       const maxScroll = Math.max(
         0,
         document.documentElement.scrollHeight - window.innerHeight
       );
-      const currentScroll = window.scrollY || window.pageYOffset || 0;
+      const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
 
       // If at or near bottom, restart tour smoothly from top
       if (currentScroll >= maxScroll - 25) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setTimeout(() => {
           startAutoScroll();
-        }, 850);
+        }, 650);
       } else {
         startAutoScroll();
       }
     }
   }, [pauseAutoScroll, startAutoScroll]);
 
-  // Pause autoscroll on manual user interactions (wheel, touch, key navigation)
+  // Pause autoscroll ONLY on deliberate user manual scroll gestures (wheel, drag touchmove, arrows)
   useEffect(() => {
-    const handleUserInteraction = (e) => {
-      if (e.target && e.target.closest && e.target.closest('.royal-autoscroll-widget')) {
-        return;
-      }
-      if (autoScrollActiveRef.current) {
-        pauseAutoScroll();
+    let touchStartY = null;
+
+    const handleWheel = (e) => {
+      if (Math.abs(e.deltaY) > 3) {
+        if (isAutoScrollingRef.current) {
+          pauseAutoScroll();
+        }
       }
     };
 
-    const handleKeyInteraction = (e) => {
-      if (['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) return;
-      if (autoScrollActiveRef.current) {
-        pauseAutoScroll();
+    const handleTouchStart = (e) => {
+      if (e.touches && e.touches[0]) {
+        touchStartY = e.touches[0].clientY;
       }
     };
 
-    window.addEventListener('wheel', handleUserInteraction, { passive: true });
-    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
-    window.addEventListener('pointerdown', handleUserInteraction, { passive: true });
-    window.addEventListener('keydown', handleKeyInteraction);
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches[0] && touchStartY !== null) {
+        const delta = Math.abs(e.touches[0].clientY - touchStartY);
+        if (delta > 12) {
+          if (isAutoScrollingRef.current) {
+            pauseAutoScroll();
+          }
+        }
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space', 'Home', 'End'].includes(e.key)) {
+        if (isAutoScrollingRef.current) {
+          pauseAutoScroll();
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('wheel', handleUserInteraction);
-      window.removeEventListener('touchstart', handleUserInteraction);
-      window.removeEventListener('pointerdown', handleUserInteraction);
-      window.removeEventListener('keydown', handleKeyInteraction);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('keydown', handleKeyDown);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
@@ -181,10 +223,10 @@ export default function App() {
 
   const handleGateDismissed = () => {
     setTourVisible(true);
-    // Allow user to take in the royal palace entrance for 1.4 seconds, then start cinematic autoscroll
+    // Allow user to take in the royal palace entrance for 400ms, then start cinematic autoscroll
     setTimeout(() => {
       startAutoScroll();
-    }, 1400);
+    }, 400);
   };
 
   return (

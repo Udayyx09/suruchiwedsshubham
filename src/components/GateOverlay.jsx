@@ -34,21 +34,21 @@ export default function GateOverlay({ onOpenGate, onHeroReveal, onGateDismissed 
       onOpenGate();
     }
 
-    // t = 3.3s: Hero text begins entering
+    // t = 2.0s: Hero text begins entering
     setTimeout(() => {
       if (onHeroReveal) {
         onHeroReveal();
       }
-    }, 3300);
+    }, 2000);
 
-    // t = 4.6s: Gate overlay fully dismissed & scroll unlocked
+    // t = 2.6s: Gate overlay fully dismissed & scroll unlocked
     setTimeout(() => {
       setIsHidden(true);
       document.body.classList.remove('gate-locked');
       if (onGateDismissed) {
         onGateDismissed();
       }
-    }, 4600);
+    }, 2600);
   };
 
   useEffect(() => {
