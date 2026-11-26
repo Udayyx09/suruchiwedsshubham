@@ -40,8 +40,8 @@ export default function HeroSection({ isRevealed }) {
           style={{ transform: skyTransform }}
         >
           <picture>
-            <source media="(max-width: 768px)" srcSet="/assets/hero-sky.webp" />
-            <img src="/assets/hero-sky.webp" alt="" className="hero-sky-img" />
+            <source media="(max-width: 768px)" srcSet="assets/hero-sky.webp" />
+            <img src="assets/hero-sky.webp" alt="" className="hero-sky-img" />
           </picture>
         </div>
         <div className="hero-sun-rays" />
@@ -78,9 +78,9 @@ export default function HeroSection({ isRevealed }) {
             <div className="hero-sun-disc" />
           </div>
           <picture>
-            <source media="(max-width: 768px)" srcSet="/assets/grand-palace-1000.webp" />
+            <source media="(max-width: 768px)" srcSet="assets/grand-palace-1000.webp" />
             <img 
-              src="/assets/grand-palace.webp" 
+              src="assets/grand-palace.webp" 
               alt="Grand Rajasthani palace gate" 
               className="hero-palace-img" 
               width="1734" 

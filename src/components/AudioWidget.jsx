@@ -42,7 +42,7 @@ const AudioWidget = forwardRef((props, ref) => {
         loop 
         preload="auto"
       >
-        <source src="/assets/audio/shehnai_sitar_royale.mp3" type="audio/mp3" />
+        <source src="assets/audio/shehnai_sitar_royale.mp3" type="audio/mp3" />
       </audio>
 
       <div 

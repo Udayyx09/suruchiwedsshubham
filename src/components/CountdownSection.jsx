@@ -37,7 +37,7 @@ export default function CountdownSection() {
   return (
     <section className="countdown-section" id="countdownSection">
       <div className="rosette-separator" aria-hidden="true" data-reveal="up">
-        <img src="/assets/jewel-rosette.webp" alt="" loading="lazy" />
+        <img src="assets/jewel-rosette.webp" alt="" loading="lazy" />
       </div>
 
       <div className="countdown-wrap" data-reveal="up">

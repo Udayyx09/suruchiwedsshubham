@@ -88,7 +88,7 @@ export default function GateOverlay({ onOpenGate, onHeroReveal, onGateDismissed 
       <div className="gate-stage" id="gateStage">
         {/* Master Gate Facade */}
         <img 
-          src="/assets/gate/peacock.webp" 
+          src="assets/gate/peacock.webp" 
           alt="Royal Palace Peacock Gateway" 
           className="gate-facade-img" 
         />
@@ -96,7 +96,7 @@ export default function GateOverlay({ onOpenGate, onHeroReveal, onGateDismissed 
         {/* Portal cutout mask behind doors */}
         <div className="gate-mask-portal" aria-hidden="true">
           <div className="gate-portal-scene">
-            <img src="/assets/hero-sky.webp" alt="" className="gate-portal-sky" />
+            <img src="assets/hero-sky.webp" alt="" className="gate-portal-sky" />
             <div className="gate-portal-sun" />
             <div className="gate-portal-light" />
           </div>
@@ -104,13 +104,13 @@ export default function GateOverlay({ onOpenGate, onHeroReveal, onGateDismissed 
 
         {/* Swinging 3D Gate Doors */}
         <img 
-          src="/assets/gate/peacock-left.webp" 
+          src="assets/gate/peacock-left.webp" 
           alt="Left Gate Door" 
           className="gate-door gate-door--left" 
           id="doorLeft" 
         />
         <img 
-          src="/assets/gate/peacock-right.webp" 
+          src="assets/gate/peacock-right.webp" 
           alt="Right Gate Door" 
           className="gate-door gate-door--right" 
           id="doorRight" 

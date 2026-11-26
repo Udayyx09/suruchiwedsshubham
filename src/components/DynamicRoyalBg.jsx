@@ -14,10 +14,10 @@ export default function DynamicRoyalBg() {
       <span className="royal-bg-corner royal-bg-corner--bl">&#10070;</span>
       <span className="royal-bg-corner royal-bg-corner--br">&#10070;</span>
       <div className="mandala-corner mandala-corner--tr">
-        <img src="/assets/blue-mandala.webp" alt="" loading="lazy" />
+        <img src="assets/blue-mandala.webp" alt="" loading="lazy" />
       </div>
       <div className="mandala-corner mandala-corner--bl">
-        <img src="/assets/blue-mandala.webp" alt="" loading="lazy" />
+        <img src="assets/blue-mandala.webp" alt="" loading="lazy" />
       </div>
     </div>
   );

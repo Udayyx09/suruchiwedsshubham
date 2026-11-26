@@ -8,7 +8,7 @@ export default function BlessingsFooter() {
     <>
       <section className="closing-blessing-section" id="blessingSection">
         <div className="rosette-separator" aria-hidden="true" data-reveal="up">
-          <img src="/assets/jewel-rosette.webp" alt="" loading="lazy" />
+          <img src="assets/jewel-rosette.webp" alt="" loading="lazy" />
         </div>
         <p className="closing-sub" data-reveal="up">We await your gracious presence &amp; blessings</p>
         <h2 className="closing-names" data-reveal="up">{coupleText}</h2>
@@ -21,7 +21,7 @@ export default function BlessingsFooter() {
       <footer className="desert-footer" id="footerSection">
         <picture>
           <img 
-            src="/assets/desert-folk.webp" 
+            src="assets/desert-folk.webp" 
             alt="Painted Rajasthani desert scene with camel caravan and musicians" 
             className="desert-folk-img" 
             width="3072" 

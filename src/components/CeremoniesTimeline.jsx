@@ -72,7 +72,7 @@ export default function CeremoniesTimeline() {
           aria-hidden="true"
           ref={carRef}
         >
-          <img src="/assets/timeline-car.webp" alt="Wedding Procession Car" />
+          <img src="assets/timeline-car.webp" alt="Wedding Procession Car" />
         </div>
 
         <ul className="ceremonies-list">
@@ -82,14 +82,14 @@ export default function CeremoniesTimeline() {
               <div className="ceremony-scroll-col">
                 <article className="unrolling-scroll-card" data-unroll-card>
                   <img 
-                    src="/assets/scroll/top.webp" 
+                    src="assets/scroll/top.webp" 
                     alt="" 
                     className="scroll-top-roller" 
                     aria-hidden="true" 
                   />
                   <div className="scroll-body-layer">
                     <img 
-                      src="/assets/scroll/body.webp" 
+                      src="assets/scroll/body.webp" 
                       alt="" 
                       className="scroll-body-bg" 
                       aria-hidden="true" 
@@ -123,7 +123,7 @@ export default function CeremoniesTimeline() {
                     </div>
                   </div>
                   <img 
-                    src="/assets/scroll/bottom.webp" 
+                    src="assets/scroll/bottom.webp" 
                     alt="" 
                     className="scroll-bottom-roller" 
                     aria-hidden="true" 
