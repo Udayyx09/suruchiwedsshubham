@@ -25,10 +25,12 @@ export const weddingConfig = {
     },
     groom: {
       name: 'Shubham',
-      fullName: 'Shubham',
+      fullName: 'Shubham Kushwaha',
       shortName: 'Shubham',
       role: 'The Groom',
-      photo: null
+      photo: 'assets/img/groom_shubham_portrait.jpg',
+      photoPosition: 'center 15%',
+      photoScale: 1
     }
   },
 

@@ -1117,6 +1117,11 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       max-width: 26rem;
       margin: 0 auto;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .couple-card-inner:hover {
       transform: translateY(-4px);
@@ -1275,6 +1280,21 @@
     }
     .jharokha-shutter-handle--left { right: 5%; }
     .jharokha-shutter-handle--right { left: 5%; }
+
+    
+    .couple-photo-caption {
+      margin-top: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .couple-photo-caption .couple-role-pill {
+      margin-bottom: 0.5rem;
+    }
+    .couple-photo-caption .couple-name {
+      margin: 0.35rem 0 0.25rem;
+    }
 
     .couple-role {
       font-family: var(--font-script);
