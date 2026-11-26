@@ -21,7 +21,9 @@ export const weddingConfig = {
       fullName: 'Suruchi Kushwaha',
       shortName: 'Suruchi',
       role: 'The Bride',
-      photo: null
+      photo: 'assets/img/bride_suruchi_portrait.jpg',
+      photoPosition: 'center 15%',
+      photoScale: 1
     },
     groom: {
       name: 'Shubham',
